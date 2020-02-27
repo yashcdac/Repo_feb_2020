@@ -1,15 +1,14 @@
 package com.yash.tester;
 
+import java.sql.SQLException;
+
+import com.yash.dao.RegionDaoImpl;
+
 public class EmployeeTest {
 	
-	public static void main(String args[]) {
+	public static void main(String args[]) throws ClassNotFoundException, SQLException, Exception {
 		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println(new RegionDaoImpl().getAllRegions());
 	}
 
 }
