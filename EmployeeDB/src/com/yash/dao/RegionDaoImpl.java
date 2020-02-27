@@ -2,15 +2,15 @@ package com.yash.dao;
 
 import static com.yash.integrate.DBConnection.getConnection;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.fabric.xmlrpc.base.Array;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
+
 import com.yash.entities.Region;
 
 public class RegionDaoImpl implements RegionDao {
