@@ -1,6 +1,6 @@
 package com.yash.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /*
  * 
@@ -13,20 +13,20 @@ public class Employee {
 	private String lastName;
 	private String email;
 	private String phoneNumber;
-	private Date hireDate;
+	private LocalDate hireDate;
 	private double salary;
 	private double commissionPct;
-	private String jobId;
+	private Job job;
 	private int managerId;
-	private int departmentId;
+	private Department department;
 
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(int employeeId, String firstName, String lastName, String email, String phoneNumber, Date hireDate,
-			double salary, double commissionPct, String jobId, int managerId, int departmentId) {
+	public Employee(int employeeId, String firstName, String lastName, String email, String phoneNumber,
+			LocalDate hireDate, double salary, double commissionPct, Job job, int managerId, Department department) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -36,9 +36,9 @@ public class Employee {
 		this.hireDate = hireDate;
 		this.salary = salary;
 		this.commissionPct = commissionPct;
-		this.jobId = jobId;
+		this.job = job;
 		this.managerId = managerId;
-		this.departmentId = departmentId;
+		this.department = department;
 	}
 
 	public int getEmployeeId() {
@@ -81,11 +81,11 @@ public class Employee {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getHireDate() {
+	public LocalDate getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(LocalDate hireDate) {
 		this.hireDate = hireDate;
 	}
 
@@ -105,12 +105,12 @@ public class Employee {
 		this.commissionPct = commissionPct;
 	}
 
-	public String getJobId() {
-		return jobId;
+	public Job getJob() {
+		return job;
 	}
 
-	public void setJobId(String jobId) {
-		this.jobId = jobId;
+	public void setJob(Job job) {
+		this.job = job;
 	}
 
 	public int getManagerId() {
@@ -121,20 +121,20 @@ public class Employee {
 		this.managerId = managerId;
 	}
 
-	public int getDepartmentId() {
-		return departmentId;
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", phoneNumber=" + phoneNumber + ", hireDate=" + hireDate + ", salary=" + salary
-				+ ", commissionPct=" + commissionPct + ", jobId=" + jobId + ", managerId=" + managerId
-				+ ", departmentId=" + departmentId + "]";
+				+ ", commissionPct=" + commissionPct + ", job=" + job + ", managerId=" + managerId + ", department="
+				+ department + "]";
 	}
 
 }
