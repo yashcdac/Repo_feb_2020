@@ -9,20 +9,19 @@ public class Department {
 
 	private int departmentId;
 	private String departmentName;
-	private int managerId;
-	private int locationId;
-
+	private Employee manager;
+	private Location location;
+	
 	public Department() {
-		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
-	public Department(int departmentId, String departmentName, int managerId, int locationId) {
-		super();
+	public Department(int departmentId, String departmentName, Employee manager, Location location) {
+	
 		this.departmentId = departmentId;
 		this.departmentName = departmentName;
-		this.managerId = managerId;
-		this.locationId = locationId;
+		this.manager = manager;
+		this.location = location;
 	}
 
 	public int getDepartmentId() {
@@ -41,26 +40,27 @@ public class Department {
 		this.departmentName = departmentName;
 	}
 
-	public int getManagerId() {
-		return managerId;
+	public Employee getManager() {
+		return manager;
 	}
 
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
+	public void setManager(Employee manager) {
+		this.manager = manager;
 	}
 
-	public int getLocationId() {
-		return locationId;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	@Override
 	public String toString() {
-		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName + ", managerId="
-				+ managerId + ", locationId=" + locationId + "]";
+		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName + ", manager="
+				+ manager + ", location=" + location + "]";
 	}
-
+	
+	
 }
