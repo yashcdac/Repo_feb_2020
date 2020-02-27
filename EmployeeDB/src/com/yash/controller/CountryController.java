@@ -1,5 +1,5 @@
 package com.yash.controller;
 
-public class abc {
+public class CountryController {
 
 }
