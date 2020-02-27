@@ -2,7 +2,7 @@ package com.yash.integrate;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 public class DBConnection {
 
@@ -11,6 +11,6 @@ public class DBConnection {
 		DataSourceReader dataSourceReader=new DataSourceReader("DB");
 		DataSource dataSource=dataSourceReader.getDataSource();
 		Class.forName(dataSource.getDriver());
-		return (Connection) DriverManager.getConnection(dataSource.getUrl(), dataSource.getUsername(), dataSource.getPassword());
+		return DriverManager.getConnection(dataSource.getUrl(), dataSource.getUsername(), dataSource.getPassword());
 	}
 }
