@@ -1,17 +1,24 @@
 package com.yash.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.yash.entities.Employee;
+import com.yash.service.EmployeeService;
+import com.yash.service.EmployeeServiceImpl;
 
 public class EmployeeController {
+	
+	private EmployeeService employeeService;
+	public EmployeeController() throws ClassNotFoundException, SQLException {
+		employeeService=new EmployeeServiceImpl();
+	}
 	
 	/*
 	 * To do by pranaw
 	 * */
-	public List<Employee> getAllEmployee() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Employee> getAllEmployee() throws Exception {
+		return employeeService.getAllEmployee();
 	}
 
 	/*
