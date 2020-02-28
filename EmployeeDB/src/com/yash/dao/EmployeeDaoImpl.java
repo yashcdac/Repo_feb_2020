@@ -1,36 +1,28 @@
 package com.yash.dao;
 
 import java.sql.Connection;
-<<<<<<< HEAD
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-=======
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
->>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 import java.util.List;
 
 import com.yash.entities.Employee;
-<<<<<<< HEAD
-=======
+
 import com.yash.entities.Region;
->>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 import com.yash.integrate.DBConnection;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
 	private Connection connection;
 	private Statement statement;
-<<<<<<< HEAD
-	public EmployeeDaoImpl() throws ClassNotFoundException, SQLException {
-		connection=DBConnection.getConnection();
-		statement=connection.createStatement();
-	}
-=======
+	
 	private static final String ALL_EMPLOYEE = "SELECT * FROM EMPLOYEES";
 
 	public EmployeeDaoImpl() throws ClassNotFoundException, SQLException {
@@ -39,7 +31,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 	}
 
->>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 	@Override
 	public List<Employee> getAllEmployee() throws Exception {
 		List<Employee> employees=new ArrayList<>();
