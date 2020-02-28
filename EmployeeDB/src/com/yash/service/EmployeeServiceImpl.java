@@ -2,6 +2,8 @@ package com.yash.service;
 
 import java.util.List;
 
+import com.yash.dao.EmployeeDao;
+import com.yash.dao.EmployeeDaoImpl;
 import com.yash.entities.Employee;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -20,8 +22,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public String insertEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+		EmployeeDao dao=new EmployeeDaoImpl();
+		
+		return dao.insertEmployee(employee);
+		
+		
+		
 	}
 
 	@Override
