@@ -1,49 +1,36 @@
-package com.yash.controller;
+package com.yash.dao;
 
 import java.util.List;
 
 import com.yash.entities.Employee;
 
-public class EmployeeController {
-	
-	/*
-	 * To do by pranaw
-	 * */
+public class EmployeeDaoImpl implements EmployeeDao {
+
+	@Override
 	public List<Employee> getAllEmployee() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/*
-	 * To do by pranaw
-	 * */
+	@Override
 	public Employee getEmployeeById(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	/*
-	 * To do by siddhant
-	 * */
+	@Override
 	public String insertEmployee(Employee employee) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	/*
-	 * To do by reshma
-	 * */
+	@Override
 	public String updateEmployee(Employee employee) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	/*
-	 * To do by swati
-	 * */
+	@Override
 	public String deleteEmployee(Employee employee) {
 		// TODO Auto-generated method stub
 		return null;
