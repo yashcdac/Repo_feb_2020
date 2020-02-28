@@ -7,6 +7,7 @@ import com.yash.view.employee.AllEmployeeView;
 
 import com.yash.view.employee.EmployeeRegistrationView;
 
+
 public class MainView {
 
 	public void mainMenu() {

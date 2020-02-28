@@ -1,5 +1,6 @@
 package com.yash.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.yash.dao.EmployeeDao;
@@ -8,31 +9,35 @@ import com.yash.entities.Employee;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
+	private EmployeeDao employeeDao;
+
+	public EmployeeServiceImpl() throws ClassNotFoundException, SQLException {
+		employeeDao = new EmployeeDaoImpl();
+	}
+
 	@Override
-	public List<Employee> getAllEmployee() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Employee> getAllEmployee() throws Exception {
+		return employeeDao.getAllEmployee();
 	}
 
 	@Override
 	public Employee getEmployeeById(int employeeId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String insertEmployee(Employee employee) {
+	public String insertEmployee(Employee employee) throws SQLException,ClassNotFoundException {
+
 		EmployeeDao dao=new EmployeeDaoImpl();
 		
 		return dao.insertEmployee(employee);
 		
-		
-		
+	
+
 	}
 
 	@Override
 	public String updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
