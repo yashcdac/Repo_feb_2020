@@ -1,11 +1,14 @@
 package com.yash.view;
 
 import java.util.Scanner;
+import static com.yash.view.employee.AllEmployeeView.*;
+import com.yash.helper.ScannerSupplier;
+import com.yash.view.employee.AllEmployeeView;
 
 public class MainView {
 
 	public void mainMenu() {
-		try (Scanner scanner = new Scanner(System.in)) {
+		try (Scanner scanner = ScannerSupplier.getScannerSupplier().get()) {
 			boolean exit = true;
 			while (exit) {
 				try {
@@ -15,7 +18,8 @@ public class MainView {
 									+ "4. Update Employee\n" + "5. Delete Employee\n" + "6. Exit" + "\n");
 					switch (scanner.nextInt()) {
 					case 1:
-
+						AllEmployeeView allEmployeeView=new AllEmployeeView();
+						allEmployeeView.getAllEmployeeView();
 						break;
 					case 2:
 
@@ -38,7 +42,7 @@ public class MainView {
 						break;
 					}
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();
 				}
 
 			}

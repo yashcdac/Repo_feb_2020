@@ -6,9 +6,9 @@ import com.yash.entities.Employee;
 
 public interface EmployeeService {
 
-	List<Employee> getAllEmployee();
-	Employee getEmployeeById(int employeeId);
-	String insertEmployee(Employee employee);
-	String updateEmployee(Employee employee);
-	String deleteEmployee(Employee employee);
+	List<Employee> getAllEmployee() throws Exception;
+	Employee getEmployeeById(int employeeId) throws Exception;
+	String insertEmployee(Employee employee) throws Exception;
+	String updateEmployee(Employee employee) throws Exception;
+	String deleteEmployee(Employee employee) throws Exception;
 }

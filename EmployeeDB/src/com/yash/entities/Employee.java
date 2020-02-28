@@ -40,6 +40,22 @@ public class Employee {
 		this.managerId = managerId;
 		this.department = department;
 	}
+	
+	
+
+	public Employee(int employeeId, String firstName, String lastName, String email, String phoneNumber,
+			LocalDate hireDate, double salary, double commissionPct, int managerId) {
+		super();
+		this.employeeId = employeeId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.hireDate = hireDate;
+		this.salary = salary;
+		this.commissionPct = commissionPct;
+		this.managerId = managerId;
+	}
 
 	public int getEmployeeId() {
 		return employeeId;
