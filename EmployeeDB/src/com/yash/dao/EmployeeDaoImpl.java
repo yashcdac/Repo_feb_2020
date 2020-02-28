@@ -32,7 +32,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public List<Employee> getAllEmployee() throws Exception {
+	public List<Employee> getAllEmployee()throws ClassNotFoundException,SQLException {
 		List<Employee> employees=new ArrayList<>();
 		ResultSet rs=statement.executeQuery(ALL_EMPLOYEE);  
 		while(rs.next())  
