@@ -20,6 +20,48 @@ public class Employee {
 	private int managerId;
 	private Department department;
 
+	private Employee(Employee.EmployeeBulider builder) {
+		this.email=builder.email;
+		this.phoneNumber=builder.phoneNumber;
+		this.salary=builder.salary;
+		this.commissionPct=builder.commissionPct;
+		//this.job=builder.job;
+		this.managerId=builder.managerId;
+		//this.department=builder.department;
+	}
+	private static class EmployeeBulider{
+		private String email;
+		private String phoneNumber;
+		private double salary;
+		private double commissionPct;
+		//private Job job;
+		private int managerId;
+		//private Department department;
+		
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
+		public void setSalary(double salary) {
+			this.salary = salary;
+		}
+		public void setCommissionPct(double commissionPct) {
+			this.commissionPct = commissionPct;
+		}
+		public void setManagerId(int managerId) {
+			this.managerId = managerId;
+		}
+		public Employee build(){
+			return new Employee(this);
+		}
+		
+	}
+	
+	
+	
+	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
