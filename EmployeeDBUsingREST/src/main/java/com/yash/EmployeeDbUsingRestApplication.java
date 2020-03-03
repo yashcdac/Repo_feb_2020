@@ -10,7 +10,6 @@ public class EmployeeDbUsingRestApplication {
 		SpringApplication.run(EmployeeDbUsingRestApplication.class, args);
 		System.out.println("running.......");
 		
-		
 	}
 
 }
