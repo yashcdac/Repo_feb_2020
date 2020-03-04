@@ -9,7 +9,6 @@ public class EmployeeDbUsingRestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeDbUsingRestApplication.class, args);
 		System.out.println("running.......");
-		
 	}
 
 }
