@@ -7,6 +7,10 @@
 <script type="text/javascript">
 	var employeeApp=angular.module("employeeApp",[]);
 	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
+		$scope.addFlag=false;
+		$scope.register=()=>{
+			$scope.addFlag=true;
+		}
 		
 	}]);
 	
@@ -14,6 +18,7 @@
 </script>
 </head>
 <body x-ng-controller="employeeController">
+	<input type="button" value="Register Employee" x-ng-click='register()'>
 	
 </body>
 </html>
