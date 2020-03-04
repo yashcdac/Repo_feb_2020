@@ -9,6 +9,7 @@
 	var employeeApp=angular.module("employeeApp",[]);
 	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
 		$scope.addFlag=false;
+		
 		$scope.register=()=>{
 			$scope.addFlag=true;
 		}
