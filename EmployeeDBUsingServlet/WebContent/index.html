@@ -1,19 +1,49 @@
 <!DOCTYPE html>
-<html  x-ng-app="employeeApp">
+<html x-ng-app="employeeApp">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript">
-	var employeeApp=angular.module("employeeApp",[]);
-	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
-		
-	}]);
+<script src="angular.min.js" ></script>
+<script>
+var employeeApp=angular.module('employeeApp',[]);
+
+employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
+	$http({
+			url:'getAllEmployee',
+			method:'GET'
+	}
+	).then(function(response){
+			$scope.employees=response.data;
+		},
+	function(response){
+			$log.error(response);
+		}
 	
-	
+	);
+}]);
+
 </script>
 </head>
-<body>
+<body x-ng-controller="employeeController">
+<table border="2px">
+			<tr>
+				<th>Employee Id</th><th>Employee Name </th><th>Employee Salary</th><th>Employee Designation </th>
+			</tr>
+				<tr x-ng-repeat="employee in employees">
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.empId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.empId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.empName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.empName}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.empSalary}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.empSalary}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.empDesignation}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.empDesignation}}</td>
+			</tr>
+		
+		</table>
 
 </body>
 </html>
