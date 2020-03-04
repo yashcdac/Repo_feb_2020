@@ -73,12 +73,16 @@ public class EmployeeController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String action = request.getParameter("action");
+		if(action.contentEquals("insert"))
+		{
+			loadForm(request, response);
+		}
 		
 	}
 
 	protected void loadForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 	}
 
 	protected void viewEmployee(HttpServletRequest request, HttpServletResponse response)
@@ -103,12 +107,12 @@ public class EmployeeController extends HttpServlet {
 
 	protected void updateEmployeeForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 	}
 
 	protected void updateEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 	}
 
 	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
