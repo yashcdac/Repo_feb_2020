@@ -78,6 +78,16 @@ public class EmployeeController extends HttpServlet {
 			loadForm(request, response);
 		}
 		
+		if(action.contentEquals("getAllEmployee"))
+		{
+			viewEmployee(request,response);
+		}
+		
+		
+		
+		
+		
+		
 	}
 
 	protected void loadForm(HttpServletRequest request, HttpServletResponse response)
