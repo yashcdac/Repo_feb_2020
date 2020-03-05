@@ -29,9 +29,45 @@
 	})
 	
 	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
-		$scope.addFlag=false;
-		$scope.register=()=>{
-			$scope.addFlag=true;
+		$scope.addEmployee=(e)=>{
+			$http({
+					url:'employee?action=addEmployee',
+					method:'POST',
+					data:{
+						'employeeId':e.employeeId,
+						'firstName':e.firstName,
+						'lastName':e.lastName,
+						'email':e.email,
+						'phoneNumber':e.phoneNumber,
+						'hireDate':e.hireDate,
+						'jobId':e.jobId,
+						'salary':e.salary,
+						'commissionPCT':e.commissionPCT,
+						'managerId':e.managerId,
+						'departmentId':e.departmentId,
+					}})
+			.then(
+			res=>{
+				$scope.status=res.data;
+			},
+			err=>{
+				$log.error(err);
+			}
+			);
+		}
+		
+	
+		$scope.getAllEmployee=()=>{
+			console.log("aaaaaaaa")
+			$http({url:"employee?action=getAllEmployee"})
+			.then(function(response){
+				$scope.employees=response.data;
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);
 		}
 		$scope.updateEmployee=function(e){
 			$http({
@@ -58,18 +94,7 @@
 			});
 		};
 	
-		$scope.getAllEmployee=()=>{
-			console.log("aaaaaaaa")
-			$http({url:"employee?action=getAllEmployee"})
-			.then(function(response){
-				$scope.employees=response.data;
-			},
-		function(response){
-				$log.error(response);
-			}
-		
-		);
-		}
+	
 		
 	}]);
 </script>
