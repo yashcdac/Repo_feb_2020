@@ -179,7 +179,6 @@ public class EmployeeController extends HttpServlet {
 			sb.append(str);
 		};
 		
-		
 		try {
 			JSONObject jsonObject = new JSONObject(sb.toString());
 			AllEmployeesModel e=new AllEmployeesModel();
