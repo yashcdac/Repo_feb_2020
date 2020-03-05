@@ -22,6 +22,10 @@
 			templateUrl:"updateDelList.htm",
 			controller:'employeeController'
 		});
+		.when("/getEmployeeById",{
+			templateUrl:"employeeDetail.htm",
+			controller:'employeeController'
+		});
 	})
 	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
 		$scope.addFlag=false;
@@ -43,12 +47,23 @@
 		);
 		}
 		
+		$scope.getEmployeeById=()=>{
+			console.log("printing employee details");
+			$http({url:"employee?action=getEmployeeById"})
+			.then(function(response){
+				$scope.employees=response.data;
+			},
+			function(response){$log.error(response);}
+			);
+		}
+		
 	}]);
 </script>
 </head>
 <body x-ng-controller="employeeController">
 <p><a href="#/">Home Page</a></p>
 <p><a href="#/getAllEmployees">Get Employee List</a></p>
+<p><a href="#/getEmployeeById">Get Employee By Id</a></p>
 <p><a href="#/updateDelEmployee">update/delete Employee</a></p>
 <p><a href="#/addEmployee">Register Employee</a></p>
 <div x-ng-view></div>
