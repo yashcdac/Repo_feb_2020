@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form>
+ <table>
+<tr>
+<th>Employee Id</th><th>First Name</th><th>Last Name</th><th>Email</th><th>PhoneNumber</th><th>Hire Date</th><th>Job Id</th><th>Salary</th><th>Commission Pct</th><th>Manager id</th><th>Department Id</th><th>Update</th><th>Delete</th>
+</tr>
+
+<tr x-ng-repeat="employee in employees">
+<td>{{employee.employeeId}}</td>
+<td>{{employee.firstName}}</td>
+<td>{{employee.lastName}}</td>
+<td>{{employee.email}}</td>
+<td>{{employee.phoneNumber}}</td>
+<td>{{employee.hireDate}}</td>
+<td>{{employee.jobId}}</td>
+<td>{{employee.salary}}</td>
+<td>{{employee.commissionPCT}}</td>
+<td>
+<form method="post">
+<input type="submit" value="Update"/>
+</form>
+</td>
+<td>
+<form method="post">
+<input type="submit" value="Delete"/>
+</form>
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html>
