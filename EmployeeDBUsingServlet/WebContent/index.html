@@ -1,76 +1,4 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html x-ng-app="employeeApp">
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
 
-<script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="angular-route.js"></script>
-<script type="text/javascript">
-	var employeeApp=angular.module("employeeApp",['ngRoute']);
-	employeeApp.config(function($routeProvider){
-		$routeProvider
-		.when("/addEmployee",{
-			templateUrl:"addEmployee.htm",
-			controller:'employeeController'
-		})
-		.when("/getAllEmployees",{
-			templateUrl:"employeeList.htm",
-			controller:'employeeController'
-		})
-		.when("/updateDelEmployee",{
-			templateUrl:"updateDelList.htm",
-			controller:'employeeController'
-		});
-		.when("/getEmployeeById",{
-			templateUrl:"employeeDetail.htm",
-			controller:'employeeController'
-		});
-	})
-	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
-		$scope.addFlag=false;
-		$scope.register=()=>{
-			$scope.addFlag=true;
-		}
-		
-	
-		$scope.getAllEmployee=()=>{
-			console.log("aaaaaaaa")
-			$http({url:"employee?action=getAllEmployee"})
-			.then(function(response){
-				$scope.employees=response.data;
-			},
-		function(response){
-				$log.error(response);
-			}
-		
-		);
-		}
-		
-		$scope.getEmployeeById=function(){
-			console.log("printing employee details");
-			$http({url:"employee?action=getEmployeeById"})
-			.then(function(response){
-				$scope.employees=response.data;
-			},
-			function(response){$log.error(response);}
-			);}
-		
-	}]);
-</script>
-</head>
-<body x-ng-controller="employeeController">
-<p><a href="#/">Home Page</a></p>
-<p><a href="#/getAllEmployees" >Get Employee List</a></p>
-<p><a href="#/getEmployeeById">Get Employee By Id</a></p>
-<p><a href="#/updateDelEmployee">update/delete Employee</a></p>
-<p><a href="#/addEmployee">Register Employee</a></p>
-<div x-ng-view></div>
-		
-
-</body>
-=======
 <!DOCTYPE html>
 <html x-ng-app="employeeApp">
 <head>
@@ -181,5 +109,5 @@
 		
 
 </body>
->>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
+
 </html>
