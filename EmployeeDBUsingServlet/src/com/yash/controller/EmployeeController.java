@@ -5,13 +5,19 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.yash.converter.DateConverter;
+
+import com.yash.entities.Employees;
 import com.yash.helper.FactoryEmployeeDB;
 import com.yash.model.AllEmployeesModel;
 import com.yash.model.DepartmentsModel;
@@ -73,10 +79,21 @@ public class EmployeeController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String action = request.getParameter("action");
+		System.out.println(action);
 		if(action.contentEquals("insert"))
 		{
 			loadForm(request, response);
 		}
+		
+		if(action.contentEquals("getAllEmployee"))
+		{
+			viewEmployee(request,response);
+		}
+		
+		
+		
+		
+		
 		
 	}
 
@@ -85,9 +102,26 @@ public class EmployeeController extends HttpServlet {
 		
 	}
 
-	protected void viewEmployee(HttpServletRequest request, HttpServletResponse response)
+	protected  void viewEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+			//response.getWriter().print("View form works");
+			List<AllEmployeesModel> empList=employeeService.retrieveAllEmployees();
+			String jsonData;
+			try {
+				jsonData = JSONObject.valueToString(empList);
+				response.setContentType("application/json");
+				ServletOutputStream sos=response.getOutputStream();
+				sos.write(jsonData.getBytes());
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+			
+		
 	}
 
 	/**

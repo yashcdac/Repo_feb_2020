@@ -62,6 +62,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 				employeesAllModel.setDepartmentId(employees.getDepartmentId());
 				allemployeesModelList.add(employeesAllModel);
 			}
+			
 		} catch (ClassNotFoundException | SQLException e) {
 	          log.error(e);		
 		}
