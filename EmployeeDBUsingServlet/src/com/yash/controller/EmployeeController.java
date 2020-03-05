@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.yash.converter.DateConverter;
 import com.yash.helper.FactoryEmployeeDB;
 import com.yash.model.AllEmployeesModel;
 import com.yash.model.EmployeesModel;
@@ -147,7 +148,12 @@ public class EmployeeController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String action = request.getParameter("action");
+		
 		System.out.println(action);
+		if(action.contentEquals("addEmployee"))
+		{
+			newEmployee(request, response);
+		}
 		if(action.contentEquals("updateEmployee"))
 		{
 			updateEmployee(request, response);
@@ -192,9 +198,9 @@ public class EmployeeController extends HttpServlet {
 				String email = jsonObject.getString("email");
 				String phoneNumber = jsonObject.getString("phoneNumber");
 				//LocalDate localDate=new LocalDate
-				LocalDate hireDate = LocalDate.parse(jsonObject.getString("hireDate"));
-				hireDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				System.out.println(hireDate);
+				LocalDate hireDate = DateConverter.convertLocaleDate(jsonObject.getString("hireDate").substring(0, 10),"-");
+				//hireDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			//	System.out.println(hireDate);
 				String jobId = jsonObject.getString("jobId");
 				double salary = jsonObject.getDouble("salary");
 				double commissionPCT = jsonObject.getDouble("commissionPCT");
