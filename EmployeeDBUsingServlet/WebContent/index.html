@@ -10,9 +10,16 @@
 	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
 		$scope.addFlag=false;
 		$scope.register=()=>{
+			console.log('aaaaaaa')
 			$scope.addFlag=true;
-		}
+			
+		};
+		
 	}]);
+	employeeApp.directive('register',()=>{
+		return {restrict :"E",templateUrl: "register.html"}
+	})
+	
 </script>
 </head>
 <body x-ng-controller="employeeController">
@@ -20,8 +27,8 @@
 	<input type="button" value="Register Employee" x-ng-click='register()'>
 	
 
-	<div x-ng-if='addFlag'>
-		abc
+	<div x-ng-if='addFlag' x-ng-view>
+		<register></register>
 	</div>
 
 
