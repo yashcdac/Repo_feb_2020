@@ -29,7 +29,25 @@
 					$scope.employees = response.data;
 				}, function(response) {
 					$log.error(response);
-				}
+				});
+				$scope.updateEmployee=function(e){
+					$http({
+						url:'postEmployee',
+						method:'POST',
+						 data: {
+							 	'empId': e.empId,
+							 	'empName':e.empName,
+							 	'empSalary':e.empSalary,
+							 	'empDesig':e.empDesig
+							 }
+					}).then((res)=>{
+						console.log(res.data);
+						$scope.message=res.data;
+					},(err)=>{
+						$log.error(err);
+					});
+				};
+		}]);
 
 
 </script>

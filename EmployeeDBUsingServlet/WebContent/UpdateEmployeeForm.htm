@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html x-ng-app="employeeApp" x-ng-strict-di>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="angular.min.js"></script>
+<script>
+var employeeApp=angular.module("employeeApp",[]);
+employeeApp.controller('employeeController', [ '$scope', '$http', '$log',
+	function($scope, $http, $log) {
+	$scope.getEmpById=function(empId){
+		$http({
+			url:'getEmployeeById',
+			method:'GET',
+			 params: {'empId': empId }
+		}).then((res)=>{
+			console.log(res.data);
+			$scope.updateEmployee==res.data[0];
+		},(err)=>{
+			$log.error(err);
+		});	
+	};
+	
+	
+	
+	} ]);
+</script>
+</head>
+
+
+	<form action="">
+		<table>
+
+			<tr>
+				<td>Emp Id:</td>
+				<td><input type="text" x-ng-model="updateEmployee.empId"></td>
+			</tr>
+			<tr>
+				<td>Emp Name:</td>
+				<td><input type="text" x-ng-model="updateEmployee.empName"></td>
+			</tr>
+			<tr>
+				<td>Emp Salary:</td>
+				<td><input type="text" x-ng-model="updateEmployee.empSalary"></td>
+			</tr>
+			<tr>
+				<td>Emp Designation:</td>
+				<td><input type="text" x-ng-model="updateEmployee.empDesig"></td>
+			</tr>
+			<tr>
+				<td><input type="button" x-ng-click="updateEmployee(updateEmployee)"
+					value="update"></td>
+				<td><input type="button" value="reset"></td>
+			</tr>
+		</table>
+	</form>
+	<p>
+	{{message}}
+	</p>
+</body>
+</html>
