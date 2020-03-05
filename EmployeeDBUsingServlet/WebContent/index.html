@@ -5,7 +5,6 @@
 <title>Insert title here</title>
 
 <script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="angular-route.js"></script>
 <script type="text/javascript">
 	var employeeApp=angular.module("employeeApp",['ngRoute']);
 	employeeApp.config(function($routeProvider){
@@ -21,14 +20,42 @@
 		.when("/updateDelEmployee",{
 			templateUrl:"updateDelList.htm",
 			controller:'employeeController'
+		})
+		.when("/updateEmployee",{
+			templateUrl:"updateEmployeeForm.htm",
+			controller:'employeeController'
 		});
 	})
-	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
+	
+	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
 		$scope.addFlag=false;
 		$scope.register=()=>{
 			$scope.addFlag=true;
 		}
-		
+		$scope.updateEmployee=function(e){
+			$http({
+				url:'employee?action=updateEmployee',
+				method:'POST',
+				 data: {
+					 	'employeeId':e.employeeId,
+						'firstName':e.firstName,
+						'lastName':e.lastName,
+						'email':e.email,
+						'phoneNumber':e.phoneNumber,
+						'hireDate':e.hireDate,
+						'jobId':e.jobId,
+						'salary':e.salary,
+						'commissionPCT':e.commissionPCT,
+						'managerId':e.managerId,
+						'departmentId':e.departmentId
+					 }
+			}).then((res)=>{
+				console.log(res.data);
+				$scope.message=res.data;
+			},(err)=>{
+				$log.error(err);
+			});
+		};
 	
 		$scope.getAllEmployee=()=>{
 			console.log("aaaaaaaa")
