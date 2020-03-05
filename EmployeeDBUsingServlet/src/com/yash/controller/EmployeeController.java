@@ -162,6 +162,58 @@ public class EmployeeController extends HttpServlet {
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
+=======
+		BufferedReader bufferedReader = request.getReader();
+		StringBuilder sb = new StringBuilder();
+		String str = null;
+		while ((str = bufferedReader.readLine()) != null) {
+			sb.append(str);
+		}
+		
+			JSONObject jsonObject;
+			AllEmployeesModel model=new AllEmployeesModel();
+			try {
+				jsonObject = new JSONObject(sb.toString());
+				System.out.println(jsonObject.getString("hireDate"));
+				
+				int employeeId = jsonObject.getInt("employeeId");
+				String firstName = jsonObject.getString("firstName");
+				String lastName = jsonObject.getString("lastName");
+				String email = jsonObject.getString("email");
+				String phoneNumber = jsonObject.getString("phoneNumber");
+				//LocalDate localDate=new LocalDate
+				LocalDate hireDate = LocalDate.parse(jsonObject.getString("hireDate"));
+				hireDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				System.out.println(hireDate);
+				String jobId = jsonObject.getString("jobId");
+				double salary = jsonObject.getDouble("salary");
+				double commissionPCT = jsonObject.getDouble("commissionPCT");
+				int managerId = jsonObject.getInt("managerId");
+				int departmentId = jsonObject.getInt("departmentId");
+				
+				
+				model.setEmployeeId(employeeId);
+				model.setFirstName(firstName);
+				model.setLastName(lastName);
+				model.setEmail(email);
+				model.setPhoneNumber(phoneNumber);
+				model.setHireDate(hireDate);
+				model.setJobId(jobId);
+				model.setSalary(salary);
+				model.setCommissionPCT(commissionPCT);
+				model.setManagerId(managerId);
+				model.setDepartmentId(departmentId);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			String status=employeeService.registerEmployee(model);
+			System.out.println(status);
+
+		
+>>>>>>> 01c94cc update
 
 	}
 
