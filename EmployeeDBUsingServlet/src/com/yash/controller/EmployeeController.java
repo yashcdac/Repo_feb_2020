@@ -91,10 +91,29 @@ public class EmployeeController extends HttpServlet {
 		}
 		
 		
+		if(action.contentEquals("getEmployeeById"))
+		{
+			getEmployee(request,response);
+		}
 		
 		
 		
+	}
+
+	protected void getEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException 
+	{
+		List<EmployeesModel> employeeList=employeeService.retrieveEmployees();
+		String jsonData;
+		try {
+			jsonData = JSONObject.valueToString(employeeList);
+			response.setContentType("application/json");
+			ServletOutputStream sos = response.getOutputStream();
+			sos.write(jsonData.getBytes());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		
+	
 	}
 
 	protected void loadForm(HttpServletRequest request, HttpServletResponse response)
