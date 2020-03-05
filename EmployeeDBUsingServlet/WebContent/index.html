@@ -82,6 +82,7 @@
 			})
 			.then(function(response){
 				console.log(response.data);
+				$scope.message=response.data;
 			},
 		function(response){
 				$log.error(response);

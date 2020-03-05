@@ -155,7 +155,18 @@ public class EmployeeController extends HttpServlet {
 		
 		if(action.contentEquals("deleteEmployee"))
 		{
-			deleteEmployee(request, response);
+			try {
+				deleteEmployee(request, response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -248,24 +259,27 @@ public class EmployeeController extends HttpServlet {
 	}
 
 	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, JSONException {
 		PrintWriter out=response.getWriter();
 		
-		JSONObject jsonObject = null;
-    	
-    		int employeeId=0;
-			try {
-				employeeId = jsonObject.getInt("employeeId");
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-        out.println(employeeId);
+		BufferedReader bufferedReader = request.getReader();
+		StringBuilder sb = new StringBuilder();
+		String str = null;
+		while ((str = bufferedReader.readLine()) != null) {
+			sb.append(str);
+		}
+		JSONObject jsonObject = new JSONObject(sb.toString());
+		int employeeId=jsonObject.getInt("employeeId");
+			
+				
+			
+      
     	
     	AllEmployeesModel employeesModel=new AllEmployeesModel();
+    	
     	employeesModel.setEmployeeId(employeeId);
     	String outcome=employeeService.deleteEmployee(employeesModel);
-    	out.println(employeeId+"hii");
+    	out.println(jsonObject.getInt("employeeId")+"hii");
     	List<AllEmployeesModel> allEmployeesList=employeeService.retrieveAllEmployees();
     	for(AllEmployeesModel employees:allEmployeesList) {
     		if(employeesModel.getEmployeeId()==employeeId) {
