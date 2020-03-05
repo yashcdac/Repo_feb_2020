@@ -47,7 +47,7 @@
 		);
 		}
 		
-		$scope.getEmployeeById=()=>{
+		$scope.getEmployeeById=function(){
 			console.log("printing employee details");
 			$http({url:"employee?action=getEmployeeById"})
 			.then(function(response){
