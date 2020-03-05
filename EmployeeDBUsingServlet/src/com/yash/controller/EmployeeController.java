@@ -2,9 +2,10 @@ package com.yash.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -16,19 +17,12 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.yash.converter.DateConverter;
-
-import com.yash.entities.Employees;
 import com.yash.helper.FactoryEmployeeDB;
 import com.yash.model.AllEmployeesModel;
-import com.yash.model.DepartmentsModel;
 import com.yash.model.EmployeesModel;
-import com.yash.model.JobsModel;
-import com.yash.model.ManagersModel;
 import com.yash.service.DepartmentsService;
 import com.yash.service.EmployeesService;
 import com.yash.service.JobsService;
-import com.yash.validation.EmployeesModelValidator;
 
 /**
  * Servlet implementation class EmployeeController
@@ -158,10 +152,65 @@ public class EmployeeController extends HttpServlet {
 		{
 			updateEmployee(request, response);
 		}
+		
+		if(action.contentEquals("deleteEmployee"))
+		{
+			deleteEmployee(request, response);
+		}
 	}
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		BufferedReader bufferedReader = request.getReader();
+		StringBuilder sb = new StringBuilder();
+		String str = null;
+		while ((str = bufferedReader.readLine()) != null) {
+			sb.append(str);
+		}
+		
+			JSONObject jsonObject;
+			AllEmployeesModel model=new AllEmployeesModel();
+			try {
+				jsonObject = new JSONObject(sb.toString());
+				System.out.println(jsonObject.getString("hireDate"));
+				
+				int employeeId = jsonObject.getInt("employeeId");
+				String firstName = jsonObject.getString("firstName");
+				String lastName = jsonObject.getString("lastName");
+				String email = jsonObject.getString("email");
+				String phoneNumber = jsonObject.getString("phoneNumber");
+				//LocalDate localDate=new LocalDate
+				LocalDate hireDate = LocalDate.parse(jsonObject.getString("hireDate"));
+				hireDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				System.out.println(hireDate);
+				String jobId = jsonObject.getString("jobId");
+				double salary = jsonObject.getDouble("salary");
+				double commissionPCT = jsonObject.getDouble("commissionPCT");
+				int managerId = jsonObject.getInt("managerId");
+				int departmentId = jsonObject.getInt("departmentId");
+				
+				
+				model.setEmployeeId(employeeId);
+				model.setFirstName(firstName);
+				model.setLastName(lastName);
+				model.setEmail(email);
+				model.setPhoneNumber(phoneNumber);
+				model.setHireDate(hireDate);
+				model.setJobId(jobId);
+				model.setSalary(salary);
+				model.setCommissionPCT(commissionPCT);
+				model.setManagerId(managerId);
+				model.setDepartmentId(departmentId);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			String status=employeeService.registerEmployee(model);
+			System.out.println(status);
+
+		
 
 	}
 
@@ -200,7 +249,32 @@ public class EmployeeController extends HttpServlet {
 
 	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 int employeeId=Integer.parseInt(request.getParameter("employeeId"));	
+		PrintWriter out=response.getWriter();
+		
+		JSONObject jsonObject = null;
+    	
+    		int employeeId=0;
+			try {
+				employeeId = jsonObject.getInt("employeeId");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+        out.println(employeeId);
+    	
+    	AllEmployeesModel employeesModel=new AllEmployeesModel();
+    	employeesModel.setEmployeeId(employeeId);
+    	String outcome=employeeService.deleteEmployee(employeesModel);
+    	out.println(employeeId+"hii");
+    	List<AllEmployeesModel> allEmployeesList=employeeService.retrieveAllEmployees();
+    	for(AllEmployeesModel employees:allEmployeesList) {
+    		if(employeesModel.getEmployeeId()==employeeId) {
+    			employeesModel=employees;
+    		}
+    	}
+    	
+				   		
+  			
 		 
 	
 	}

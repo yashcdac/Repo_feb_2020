@@ -28,10 +28,69 @@
 		});
 	})
 	
-	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
-		$scope.addFlag=false;
-		$scope.register=()=>{
-			$scope.addFlag=true;
+	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
+		$scope.addEmployee=(e)=>{
+			$http({
+					url:'employee?action=addEmployee',
+					method:'POST',
+					data:{
+						'employeeId':e.employeeId,
+						'firstName':e.firstName,
+						'lastName':e.lastName,
+						'email':e.email,
+						'phoneNumber':e.phoneNumber,
+						'hireDate':e.hireDate,
+						'jobId':e.jobId,
+						'salary':e.salary,
+						'commissionPCT':e.commissionPCT,
+						'managerId':e.managerId,
+						'departmentId':e.departmentId,
+					}})
+			.then(
+			res=>{
+				$scope.status=res.data;
+			},
+			err=>{
+				$log.error(err);
+			}
+			);
+		}
+		
+	
+		$scope.getAllEmployee=()=>{
+			console.log("aaaaaaaa")
+			$http({url:"employee?action=getAllEmployee"})
+			.then(function(response){
+				$scope.employees=response.data;
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);
+		}
+		
+		$scope.deleteEmp=function(e)
+		{
+			console.log(e);
+			$http({url:"employee?action=deleteEmployee",
+				method:'POST',
+				data: {
+				 	'employeeId':e
+				 	}
+			})
+			.then(function(response){
+				console.log(response.data);
+			},
+		function(response){
+				$log.error(response);
+			}
+			
+			
+		
+		);
+			
+			
 		}
 		$scope.updateEmployee=function(e){
 			$http({
@@ -58,25 +117,14 @@
 			});
 		};
 	
-		$scope.getAllEmployee=()=>{
-			console.log("aaaaaaaa")
-			$http({url:"employee?action=getAllEmployee"})
-			.then(function(response){
-				$scope.employees=response.data;
-			},
-		function(response){
-				$log.error(response);
-			}
-		
-		);
-		}
+	
 		
 	}]);
 </script>
 </head>
 <body x-ng-controller="employeeController">
 <p><a href="#/">Home Page</a></p>
-<p><a href="#/getAllEmployees">Get Employee List</a></p>
+<p><a href="#/getAllEmployees" x-ng-init='getAllEmployee()'>Get Employee List</a></p>
 <p><a href="#/updateDelEmployee">update/delete Employee</a></p>
 <p><a href="#/addEmployee">Register Employee</a></p>
 <div x-ng-view></div>
