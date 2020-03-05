@@ -22,14 +22,14 @@
 <td>{{employee.salary}}</td>
 <td>{{employee.commissionPCT}}</td>
 <td>
-<form method="post">
-<input type="submit" value="Update"/>
+<form action="#/updateEmployee">
+<input type="submit" value="Update" />
 
 </form>
 </td>
 <td>
-<form method="post">
-<input type="submit" value="Delete"/>
+<form>
+<input type="submit" value="Delete" x-ng-click="deleteEmp(employee.employeeId)"/>
 </form>
 </td>
 </tr>
