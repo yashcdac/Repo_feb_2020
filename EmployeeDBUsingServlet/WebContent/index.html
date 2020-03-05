@@ -28,7 +28,7 @@
 		});
 	})
 	
-	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
+	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
 		$scope.addEmployee=(e)=>{
 			$http({
 					url:'employee?action=addEmployee',
