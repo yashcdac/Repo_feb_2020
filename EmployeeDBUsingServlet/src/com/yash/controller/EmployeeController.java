@@ -1,5 +1,6 @@
 package com.yash.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -151,6 +152,12 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String action = request.getParameter("action");
+		System.out.println(action);
+		if(action.contentEquals("updateEmployee"))
+		{
+			updateEmployee(request, response);
+		}
 	}
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
@@ -165,7 +172,30 @@ public class EmployeeController extends HttpServlet {
 
 	protected void updateEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		BufferedReader bufferReader = request.getReader();
+		StringBuilder sb=new StringBuilder();
+		String str=null;
+		while ((str=bufferReader.readLine())!=null) {
+			sb.append(str);
+		};
 		
+		
+		try {
+			JSONObject jsonObject = new JSONObject(sb.toString());
+			AllEmployeesModel e=new AllEmployeesModel();
+			e.setEmployeeId(jsonObject.getInt("employeeId"));
+			e.setEmail(jsonObject.getString("email"));
+			e.setPhoneNumber(jsonObject.getString("phoneNumber"));
+			e.setJobId(jsonObject.getString("jobId"));
+			e.setDepartmentId(jsonObject.getInt("departmentId"));
+			e.setManagerId(jsonObject.getInt("managerId"));
+			e.setCommissionPCT(jsonObject.getDouble("managerId"));
+			e.setSalary(jsonObject.getDouble("salary"));
+			employeeService.updateEmployee(e);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
