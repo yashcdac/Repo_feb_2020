@@ -2,11 +2,7 @@ package com.yash.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -85,22 +81,29 @@ public class EmployeeController extends HttpServlet {
 
 		String action = request.getParameter("action");
 		System.out.println(action);
-		if (action.contentEquals("insert")) {
+		if(action.contentEquals("insert"))
+		{
 			loadForm(request, response);
 		}
-
-		if (action.contentEquals("getAllEmployee")) {
-			viewEmployee(request, response);
+		
+		if(action.contentEquals("getAllEmployee"))
+		{
+			viewEmployee(request,response);
 		}
-
-		if (action.contentEquals("getEmployeeById")) {
-			getEmployee(request, response);
+		
+		
+		if(action.contentEquals("getEmployeeById"))
+		{
+			getEmployee(request,response);
 		}
-
+		
+		
+		
 	}
 
-	protected void getEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		List<EmployeesModel> employeeList = employeeService.retrieveEmployees();
+	protected void getEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException 
+	{
+		List<EmployeesModel> employeeList=employeeService.retrieveEmployees();
 		String jsonData;
 		try {
 			jsonData = JSONObject.valueToString(employeeList);
@@ -110,29 +113,35 @@ public class EmployeeController extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
+		
+	
 	}
 
 	protected void loadForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 	}
 
-	protected void viewEmployee(HttpServletRequest request, HttpServletResponse response)
+	protected  void viewEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// response.getWriter().print("View form works");
-		List<AllEmployeesModel> empList = employeeService.retrieveAllEmployees();
-		String jsonData;
-		try {
-			jsonData = JSONObject.valueToString(empList);
-			response.setContentType("application/json");
-			ServletOutputStream sos = response.getOutputStream();
-			sos.write(jsonData.getBytes());
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+			//response.getWriter().print("View form works");
+			List<AllEmployeesModel> empList=employeeService.retrieveAllEmployees();
+			String jsonData;
+			try {
+				jsonData = JSONObject.valueToString(empList);
+				response.setContentType("application/json");
+				ServletOutputStream sos=response.getOutputStream();
+				sos.write(jsonData.getBytes());
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+			
+		
 	}
 
 	/**
@@ -142,80 +151,51 @@ public class EmployeeController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String action = request.getParameter("action");
 		System.out.println(action);
-		if (action.contentEquals("addEmployee")) {
-			newEmployee(request, response);
-		}
-
-		if (action.contentEquals("updateEmployee")) {
+		if(action.contentEquals("updateEmployee"))
+		{
 			updateEmployee(request, response);
 		}
-
-	
 	}
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BufferedReader bufferedReader = request.getReader();
-		StringBuilder sb = new StringBuilder();
-		String str = null;
-		while ((str = bufferedReader.readLine()) != null) {
-			sb.append(str);
-		}
-		
-			JSONObject jsonObject;
-			AllEmployeesModel model=new AllEmployeesModel();
-			try {
-				jsonObject = new JSONObject(sb.toString());
-				System.out.println(jsonObject.getString("hireDate"));
-				
-				int employeeId = jsonObject.getInt("employeeId");
-				String firstName = jsonObject.getString("firstName");
-				String lastName = jsonObject.getString("lastName");
-				String email = jsonObject.getString("email");
-				String phoneNumber = jsonObject.getString("phoneNumber");
-				//LocalDate localDate=new LocalDate
-				LocalDate hireDate = LocalDate.parse(jsonObject.getString("hireDate"));
-				hireDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				System.out.println(hireDate);
-				String jobId = jsonObject.getString("jobId");
-				double salary = jsonObject.getDouble("salary");
-				double commissionPCT = jsonObject.getDouble("commissionPCT");
-				int managerId = jsonObject.getInt("managerId");
-				int departmentId = jsonObject.getInt("departmentId");
-				
-				model.setEmployeeId(employeeId);
-				model.setFirstName(firstName);
-				model.setLastName(lastName);
-				model.setEmail(email);
-				model.setPhoneNumber(phoneNumber);
-				model.setHireDate(hireDate);
-				model.setJobId(jobId);
-				model.setSalary(salary);
-				model.setCommissionPCT(commissionPCT);
-				model.setManagerId(managerId);
-				model.setDepartmentId(departmentId);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			String status=employeeService.registerEmployee(model);
-			System.out.println(status);
-
-		
 
 	}
 
 	protected void updateEmployeeForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 	}
 
 	protected void updateEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		BufferedReader bufferReader = request.getReader();
+		StringBuilder sb=new StringBuilder();
+		String str=null;
+		while ((str=bufferReader.readLine())!=null) {
+			sb.append(str);
+		};
+		
+		
+		try {
+			JSONObject jsonObject = new JSONObject(sb.toString());
+			AllEmployeesModel e=new AllEmployeesModel();
+			e.setEmployeeId(jsonObject.getInt("employeeId"));
+			e.setEmail(jsonObject.getString("email"));
+			e.setPhoneNumber(jsonObject.getString("phoneNumber"));
+			e.setJobId(jsonObject.getString("jobId"));
+			e.setDepartmentId(jsonObject.getInt("departmentId"));
+			e.setManagerId(jsonObject.getInt("managerId"));
+			e.setCommissionPCT(jsonObject.getDouble("managerId"));
+			e.setSalary(jsonObject.getDouble("salary"));
+			employeeService.updateEmployee(e);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
