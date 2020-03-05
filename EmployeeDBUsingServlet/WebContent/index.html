@@ -37,10 +37,17 @@
 				url:'employee?action=updateEmployee',
 				method:'POST',
 				 data: {
-					 	'empId': e.empId,
-					 	'empName':e.empName,
-					 	'empSalary':e.empSalary,
-					 	'empDesig':e.empDesig
+					 	'employeeId':e.employeeId,
+						'firstName':e.firstName,
+						'lastName':e.lastName,
+						'email':e.email,
+						'phoneNumber':e.phoneNumber,
+						'hireDate':e.hireDate,
+						'jobId':e.jobId,
+						'salary':e.salary,
+						'commissionPCT':e.commissionPCT,
+						'managerId':e.managerId,
+						'departmentId':e.departmentId
 					 }
 			}).then((res)=>{
 				console.log(res.data);
