@@ -170,6 +170,8 @@ public class EmployeeController extends HttpServlet {
 
 	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		 int employeeId=Integer.parseInt(request.getParameter(EMPLOYEE_ID_PARAM));	
+		 
+	
 	}
 }
