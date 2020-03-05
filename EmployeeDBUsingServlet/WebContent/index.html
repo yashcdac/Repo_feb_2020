@@ -11,12 +11,29 @@
 		$routeProvide
 		.when("/add",);
 	})
+	
 	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
 		$scope.addFlag=false;
 		$scope.register=()=>{
 			$scope.addFlag=true;
 		}
-		
+		$scope.updateEmployee=function(e){
+			$http({
+				url:'employee?action=updateEmployee',
+				method:'POST',
+				 data: {
+					 	'empId': e.empId,
+					 	'empName':e.empName,
+					 	'empSalary':e.empSalary,
+					 	'empDesig':e.empDesig
+					 }
+			}).then((res)=>{
+				console.log(res.data);
+				$scope.message=res.data;
+			},(err)=>{
+				$log.error(err);
+			});
+		};
 		$scope.getAllEmployee=()=>{
 			console.log("aaaaaaaa")
 			$http({url:"employee?action=getAllEmployee"})
