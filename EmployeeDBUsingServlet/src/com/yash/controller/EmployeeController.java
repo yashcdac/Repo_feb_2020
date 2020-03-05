@@ -3,8 +3,8 @@ package com.yash.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -16,19 +16,12 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.yash.converter.DateConverter;
-
-import com.yash.entities.Employees;
 import com.yash.helper.FactoryEmployeeDB;
 import com.yash.model.AllEmployeesModel;
-import com.yash.model.DepartmentsModel;
 import com.yash.model.EmployeesModel;
-import com.yash.model.JobsModel;
-import com.yash.model.ManagersModel;
 import com.yash.service.DepartmentsService;
 import com.yash.service.EmployeesService;
 import com.yash.service.JobsService;
-import com.yash.validation.EmployeesModelValidator;
 
 /**
  * Servlet implementation class EmployeeController
@@ -162,8 +155,7 @@ public class EmployeeController extends HttpServlet {
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
-=======
+
 		BufferedReader bufferedReader = request.getReader();
 		StringBuilder sb = new StringBuilder();
 		String str = null;
@@ -213,7 +205,6 @@ public class EmployeeController extends HttpServlet {
 			System.out.println(status);
 
 		
->>>>>>> 01c94cc update
 
 	}
 
