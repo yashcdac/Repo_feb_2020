@@ -1,3 +1,4 @@
+<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 <!DOCTYPE html>
 <html x-ng-app="employeeApp">
 <head>
@@ -80,4 +81,113 @@
 		
 
 </body>
+=======
+<!DOCTYPE html>
+<html x-ng-app="employeeApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	var employeeApp=angular.module("employeeApp",['ngRoute']);
+	employeeApp.config(function($routeProvider){
+		$routeProvide
+		.when("/add",);
+	})
+	employeeApp.controller('employeeController',['$scope','$http','$log',($scope,$http,$log)=>{
+		$scope.addFlag=false;
+		$scope.register=()=>{
+			$scope.addFlag=true;
+		}
+		
+		$scope.getAllEmployee=()=>{
+			console.log("aaaaaaaa")
+			$http({url:"employee?action=getAllEmployee"})
+			.then(function(response){
+				$scope.employees=response.data;
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);
+		}
+		$scope.updateEmployee=function(e){
+			$http({
+				url:'postEmployee',
+				method:'POST',
+				 data: {
+					 	'empId': e.empId,
+					 	'empName':e.empName,
+					 	'empSalary':e.empSalary,
+					 	'empDesig':e.empDesig
+					 }
+			}).then((res)=>{
+				console.log(res.data);
+				$scope.message=res.data;
+			},(err)=>{
+				$log.error(err);
+			});
+		};
+		
+	}]);
+</script>
+</head>
+<body x-ng-controller="employeeController">
+<button x-ng-click='getAllEmployee()'>getAllEMp</button>
+<table border="2px">
+			<tr>
+				<th>Employee Id</th><th>Employee FirstName </th><th>Employee LastName</th><th>Employee EmailID </th>
+				<th>phoneNumber</th><th>hireDate </th><th>jobId</th><th>salary </th>
+				<th>commissionPCT</th><th>managerId </th><th>departmentId</th>
+			</tr>
+				<tr x-ng-repeat="employee in employees">
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.employeeId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.employeeId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.firstName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.firstName}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.lastName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.lastName}}</td>
+				
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.email}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.email}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.phoneNumber}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.phoneNumber}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.hireDate}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.hireDate}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.jobId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.jobId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.salary}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.salary}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.commissionPCT}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.commissionPCT}}</td>
+				
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.managerId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.managerId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.departmentId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.departmentId}}</td>
+				
+				<!-- <td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.empSalary}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.empSalary}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.empDesignation}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.empDesignation}}</td> -->
+			</tr>
+		
+		</table>
+		{{msg}}
+
+</body>
+>>>>>>> 3d6338c pranaw
 </html>
