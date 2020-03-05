@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Detail</title>
+</head>
+<body>	
+	<table border="2px">
+			<tr>
+				<th>Employee Id</th>
+				<th>Full Name </th>
+				<th>Total Salary</th>
+				<th>Contact Number</th>
+				<th>hireDate </th>
+				<th>EmailID </th>
+			</tr>
+				<tr x-ng-repeat="employee in employees">
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.employeeId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.employeeId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.fullName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.fullName}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.totalSalary}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.totalSalary}}</td>
+				
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.contactDetails}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.contactDetails}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.tax}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.tax}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.email}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.email}}</td>
+			
+			</tr>
+		
+		</table>
+</body>
+</html>
