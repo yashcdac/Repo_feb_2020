@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="">
+		<table>
+			<tr>
+				<td>Emp Id:</td>
+				<td><input type="text" x-ng-model="updateEmp.employeeId"></td>
+			</tr>
+			<tr>
+				<td>Emp Name:</td>
+				<td><input type="text" x-ng-model="updateEmp.firstName"></td>
+			</tr>
+			<tr>
+				<td>Emp Salary:</td>
+				<td><input type="text" x-ng-model="updateEmp.lastName"></td>
+			</tr>
+			<tr>
+				<td>Emp Email:</td>
+				<td><input type="text" x-ng-model="updateEmp.email"></td>
+			</tr>
+			<tr>
+				<td>Emp PhoneNumber:</td>
+				<td><input type="text" x-ng-model="updateEmp.phoneNumber"></td>
+			</tr>
+			<tr x-ng-if='false'>
+				<td>Emp Hiredate:</td>
+				<td><input type="text" x-ng-model="updateEmp.hireDate"></td>
+			</tr>
+			<tr>
+				<td>Emp jobid:</td>
+				<td>
+					<select name="singleSelect" x-ng-model="updateEmp.jobId">
+						<option x-ng-repeat='job in jobList' x-ng-value='job.jobId'>{{job.jobTitle}}</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Emp salary:</td>
+				<td><input type="text" x-ng-model="updateEmp.salary"></td>
+			</tr>
+			<tr>
+				<td>Emp commissionPCT:</td>
+				<td><input type="text" x-ng-model="updateEmp.commissionPCT"></td>
+			</tr>
+			<tr>
+				<td>Emp managerId:</td>
+				<td><select name="singleSelect" x-ng-model="updateEmp.managerId" >
+	      <option x-ng-repeat='manager in managerList' x-ng-value='manager.employeeId'>{{manager.firstName}}</option>
+	    </select></td>
+			</tr>
+			<tr>
+				<td>Emp department:</td>
+				<td><select name="singleSelect" x-ng-model="updateEmp.departmentId" >
+	      <option x-ng-repeat='dept in deptList' x-ng-value='dept.departmentId'>{{dept.departmentName}}</option>
+	    </select></td>
+			</tr>
+			<tr>
+				<td><input type="button" x-ng-click="updateEmployee(updateEmp)"
+					value="update"></td>
+				<td><input type="button" value="reset"></td>
+			</tr>
+		</table>
+	</form>
+	<p>{{message}}</p>
+</body>
+</html>

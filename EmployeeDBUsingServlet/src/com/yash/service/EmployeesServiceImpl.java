@@ -71,7 +71,22 @@ public class EmployeesServiceImpl implements EmployeesService {
 	
 	@Override
 	public List<EmployeesModel> retrieveEmployees() {
-		return null;
+		List<EmployeesModel> employeesModelList=new ArrayList<>();
+		try {
+			List<Employees> employeesList=employeesDAO.getAllEmployees();
+			for(Employees employees:employeesList) {		
+				EmployeesModel employeesModel=new EmployeesModel();
+				employeesModel.setEmployeeId(employees.getEmployeeId());
+				employeesModel.setFullName(employees.getFirstName()+" "+employees.getLastName());
+				employeesModel.setTotalSalary(employees.getSalary()+employees.getSalary()*employees.getCommissionPCT());				
+				employeesModel.setContactDetails("Ph No:"+employees.getPhoneNumber()+","+"Email:"+employees.getEmail());
+				employeesModel.setEmail(employees.getEmail());
+				employeesModelList.add(employeesModel);
+			}	
+		} catch (ClassNotFoundException | SQLException e) {
+	          log.error(e);		
+		}
+		return employeesModelList;
 	}
 	@Override
 	public EmployeesModel retrieveDepartmentName(int employeeId) {

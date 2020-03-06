@@ -113,7 +113,7 @@ hr {
 </style>
 <body>
 
-<h2>Employee Signup Form</h2>
+<h2>Employee Signup Form </h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
 
@@ -158,18 +158,22 @@ hr {
       <input type="text" placeholder="Enter departmentId" x-ng-model="employee.departmentId" required> -->
       
        <label for="employee.hireDate"><b>hireDate</b></label>
+       <br>
       <input type="date" placeholder="Enter hireDate" x-ng-model="employee.hireDate" required>
       
+      <br><br>
        <label for="departments"> Select Department: </label><br>
 	    <select name="singleSelect" x-ng-model="dept.departmentId" >
 	      <option x-ng-repeat='dept in deptList' x-ng-value='dept.departmentId'>{{dept.departmentName}}</option>
 	    </select>
 	    
+	    <br><br>
 	    <label for="jobs"> Select Job: </label><br>
 	    <select name="singleSelect" x-ng-model="job.jobId" >
 	      <option x-ng-repeat='job in jobList' x-ng-value='job.jobId'>{{job.jobTitle}}</option>
 	    </select>
 	    
+	    <br><br>
 	    <label for="managers"> Select Manager: </label><br>
 	    <select name="singleSelect" x-ng-model="manager.employeeId" >
 	      <option x-ng-repeat='manager in managerList' x-ng-value='manager.employeeId'>{{manager.firstName}}</option>
