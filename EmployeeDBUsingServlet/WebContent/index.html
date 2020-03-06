@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html x-ng-app="employeeApp">
 <head>
@@ -120,4 +121,170 @@
 
 
 </body>
+=======
+<!DOCTYPE html>
+<html x-ng-app="employeeApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script src="angular-route.js"> </script>
+<script type="text/javascript">
+	var employeeApp=angular.module("employeeApp",['ngRoute']);
+	employeeApp.config(function($routeProvider){
+		$routeProvider
+		.when("/addEmployee",{
+			templateUrl:"addEmployee.htm",
+			controller:'employeeController'
+		})
+		.when("/getAllEmployees",{
+			templateUrl:"employeeList.htm",
+			controller:'employeeController'
+		})
+		.when("/updateDelEmployee",{
+			templateUrl:"updateDelList.htm",
+			controller:'employeeController'
+		})
+		.when("/updateEmployee",{
+			templateUrl:"updateEmployeeForm.htm",
+			controller:'employeeController'
+		});
+	})
+	
+	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
+		$scope.addEmployee=(e,d,j,m)=>{
+			console.log(e)
+			e.departmentId=d;
+			e.jobId=j;
+			e.managerId=m;
+			console.log(e)
+			 $http({
+					url:'employee?action=addEmployee',
+					method:'POST',
+					data:{
+						'employeeId':e.employeeId,
+						'firstName':e.firstName,
+						'lastName':e.lastName,
+						'email':e.email,
+						'phoneNumber':e.phoneNumber,
+						'hireDate':e.hireDate,
+						'jobId':e.jobId,
+						'salary':e.salary,
+						'commissionPCT':e.commissionPCT,
+						'managerId':e.managerId,
+						'departmentId':e.departmentId,
+					}})
+			.then(
+			res=>{
+				$scope.status=res.data;
+			},
+			err=>{
+				$log.error(err);
+			}
+			); 
+		}
+		
+	
+		$scope.getAllEmployee=()=>{
+			console.log("aaaaaaaa")
+			$http({url:"employee?action=getAllEmployee"})
+			.then(function(response){
+				$scope.employees=response.data;
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);};
+		
+		$scope.getAllDepartment=()=>{
+			console.log("getAllDepartment")
+			$http({url:"employee?action=getAllDepartment"})
+			.then(function(response){
+				$scope.deptList=response.data;
+				console.log($scope.deptList)
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);};
+		$scope.getAllJobs=()=>{
+			console.log("getAllJobs")
+			$http({url:"employee?action=getAllJobs"})
+			.then(function(response){
+				$scope.jobList=response.data;
+				console.log($scope.jobList)
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);};
+		$scope.getAllManagers=()=>{
+			console.log("getAllManagers")
+			$http({url:"employee?action=getAllManagers"})
+			.then(function(response){
+				$scope.managerList=response.data;
+				console.log($scope.managerList)
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);};
+		
+		
+		$scope.updateEmployee=function(e){
+			$http({
+				url:'employee?action=updateEmployee',
+				method:'POST',
+				 data: {
+					 	'employeeId':e.employeeId,
+						'firstName':e.firstName,
+						'lastName':e.lastName,
+						'email':e.email,
+						'phoneNumber':e.phoneNumber,
+						'hireDate':e.hireDate,
+						'jobId':e.jobId,
+						'salary':e.salary,
+						'commissionPCT':e.commissionPCT,
+						'managerId':e.managerId,
+						'departmentId':e.departmentId
+					 }
+			}).then((res)=>{
+				console.log(res.data);
+				$scope.message=res.data;
+			},(err)=>{
+				$log.error(err);
+			});
+		};
+	
+	
+		
+	}]);
+</script>
+</head>
+<body x-ng-controller="employeeController">
+	<p>
+		<a href="#/">Home Page</a>
+	</p>
+	<p>
+		<a href="#/getAllEmployees" x-ng-init='getAllEmployee()'>Get
+			Employee List</a>
+	</p>
+	<p>
+		<a href="#/updateDelEmployee">update/delete Employee</a>
+	</p>
+	<p>
+		<a href="#/addEmployee"
+			x-ng-init='getAllDepartment();getAllJobs();getAllManagers()'>Register
+			Employee</a>
+	</p>
+	<div x-ng-view></div>
+
+
+</body>
+>>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 </html>
