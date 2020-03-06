@@ -2,6 +2,7 @@ package com.yash.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -151,6 +152,22 @@ public class EmployeeController extends HttpServlet {
 		{
 			updateEmployee(request, response);
 		}
+		
+		if(action.contentEquals("deleteEmployee"))
+		{
+			try {
+				deleteEmployee(request, response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
@@ -242,7 +259,37 @@ public class EmployeeController extends HttpServlet {
 	}
 
 	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+			throws ServletException, IOException, JSONException {
+		PrintWriter out=response.getWriter();
+		
+		BufferedReader bufferedReader = request.getReader();
+		StringBuilder sb = new StringBuilder();
+		String str = null;
+		while ((str = bufferedReader.readLine()) != null) {
+			sb.append(str);
+		}
+		JSONObject jsonObject = new JSONObject(sb.toString());
+		int employeeId=jsonObject.getInt("employeeId");
+			
+				
+			
+      
+    	
+    	AllEmployeesModel employeesModel=new AllEmployeesModel();
+    	
+    	employeesModel.setEmployeeId(employeeId);
+    	String outcome=employeeService.deleteEmployee(employeesModel);
+    	out.println(jsonObject.getInt("employeeId")+"hii");
+    	List<AllEmployeesModel> allEmployeesList=employeeService.retrieveAllEmployees();
+    	for(AllEmployeesModel employees:allEmployeesList) {
+    		if(employeesModel.getEmployeeId()==employeeId) {
+    			employeesModel=employees;
+    		}
+    	}
+    	
+				   		
+  			
+		 
+	
 	}
 }

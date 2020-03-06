@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form>
+ <table>
+<tr>
+<th>Employee Id</th><th>First Name</th><th>Last Name</th><th>Email</th><th>PhoneNumber</th><th>Hire Date</th><th>Job Id</th><th>Salary</th><th>Commission Pct</th><th>Manager id</th><th>Department Id</th><th>Update</th><th>Delete</th>
+</tr>
+
+<tr x-ng-repeat="employee in employees">
+<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.employeeId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.employeeId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.firstName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.firstName}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.lastName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.lastName}}</td>
+				
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.email}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.email}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.phoneNumber}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.phoneNumber}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.hireDate}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.hireDate}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.jobId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.jobId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.salary}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.salary}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.commissionPCT}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.commissionPCT}}</td>
+				
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.managerId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.managerId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.departmentId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.departmentId}}</td>
+<td>
+<form action="#/updateEmployee">
+<input type="submit" value="Update" />
+
+</form>
+</td>
+<td>
+<form>
+<input type="submit" value="Delete" x-ng-click="deleteEmp(employee.employeeId)"/>
+</form>
+</td>
+</tr>
+</table>
+
+</form>
+</body>
+</html>

@@ -70,6 +70,30 @@
 		
 		);
 		}
+		
+		$scope.deleteEmp=function(e)
+		{
+			console.log(e);
+			$http({url:"employee?action=deleteEmployee",
+				method:'POST',
+				data: {
+				 	'employeeId':e
+				 	}
+			})
+			.then(function(response){
+				console.log(response.data);
+				$scope.message=response.data;
+			},
+		function(response){
+				$log.error(response);
+			}
+			
+			
+		
+		);
+			
+			
+		}
 		$scope.updateEmployee=function(e){
 			$http({
 				url:'employee?action=updateEmployee',
