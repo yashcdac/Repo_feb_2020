@@ -12,6 +12,30 @@
 </tr>
 
 <tr x-ng-repeat="employee in employees">
+<<<<<<< HEAD
+<td>{{employee.employeeId}}</td>
+<td>{{employee.firstName}}</td>
+<td>{{employee.lastName}}</td>
+<td>{{employee.email}}</td>
+<td>{{employee.phoneNumber}}</td>
+<td>{{employee.hireDate}}</td>
+<td>{{employee.jobId}}</td>
+<td>{{employee.salary}}</td>
+<td>{{employee.commissionPCT}}</td>
+<td>
+<form action="#/updateEmployee">
+<input type="submit" value="Update" />
+
+</form>
+</td>
+<td>
+<form>
+<input type="submit" value="Delete" x-ng-click="deleteEmp(employee.employeeId)"/>
+</form>
+</td>
+</tr>
+</table>
+=======
 <td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.employeeId}}</td>
 				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.employeeId}}</td>
 				
@@ -60,6 +84,7 @@
 </tr>
 </table>
 
+>>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 </form>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 	private EmployeesDAO employeesDAO;
 	public EmployeesServiceImpl() {
 		this.employeesDAO=FactoryEmployeeDB.createEmployeesDAO();
-        BasicConfigurator.configure();
+        //BasicConfigurator.configure();
 	}
 	public List<ManagersModel> getManagers(){
 		List<ManagersModel> managerModelList=new ArrayList<>();
@@ -71,22 +71,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 	
 	@Override
 	public List<EmployeesModel> retrieveEmployees() {
-		List<EmployeesModel> employeesModelList=new ArrayList<>();
-		try {
-			List<Employees> employeesList=employeesDAO.getAllEmployees();
-			for(Employees employees:employeesList) {		
-				EmployeesModel employeesModel=new EmployeesModel();
-				employeesModel.setEmployeeId(employees.getEmployeeId());
-				employeesModel.setFullName(employees.getFirstName()+" "+employees.getLastName());
-				employeesModel.setTotalSalary(employees.getSalary()+employees.getSalary()*employees.getCommissionPCT());				
-				employeesModel.setContactDetails("Ph No:"+employees.getPhoneNumber()+","+"Email:"+employees.getEmail());
-				employeesModel.setEmail(employees.getEmail());
-				employeesModelList.add(employeesModel);
-			}	
-		} catch (ClassNotFoundException | SQLException e) {
-	          log.error(e);		
-		}
-		return employeesModelList;
+		return null;
 	}
 	@Override
 	public EmployeesModel retrieveDepartmentName(int employeeId) {
@@ -223,6 +208,29 @@ public class EmployeesServiceImpl implements EmployeesService {
 			employeesModel.setTax(employees.getTax());
 		} catch (ClassNotFoundException | SQLException e) {
 			log.error("![Error Employee Tax details could not be retrieved!!]",e);
+		}
+		return employeesModel;
+	}
+	@Override
+	public EmployeesModel getEmployeeById(int employeeId) {
+		EmployeesModel employeesModel=new EmployeesModel();
+		try {
+			List<Employees> employeesList=employeesDAO.getAllEmployees();
+			
+			for(Employees employees:employeesList) {		
+				if(employees.getEmployeeId()==employeeId) 
+				{
+				employeesModel.setEmployeeId(employees.getEmployeeId());
+				employeesModel.setFullName(employees.getFirstName()+" "+employees.getLastName());
+				employeesModel.setTotalSalary(employees.getSalary()+employees.getSalary()*employees.getCommissionPCT());				
+				employeesModel.setContactDetails("Ph No:"+employees.getPhoneNumber()+","+"Email:"+employees.getEmail());
+				employeesModel.setEmail(employees.getEmail());
+					break;
+				}
+				
+			}	
+		} catch (ClassNotFoundException | SQLException e) {
+	          log.error(e);		
 		}
 		return employeesModel;
 	}

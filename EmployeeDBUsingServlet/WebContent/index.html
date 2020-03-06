@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html x-ng-app="employeeApp">
 <head>
@@ -8,12 +7,8 @@
 <script type="text/javascript" src="angular.min.js"></script>
 <script src="angular-route.js"> </script>
 <script type="text/javascript">
-	
-	//modified in repository
-	//modiried again in repository
 	var employeeApp=angular.module("employeeApp",['ngRoute']);
 	employeeApp.config(function($routeProvider){
-		
 		$routeProvider
 		.when("/addEmployee",{
 			templateUrl:"addEmployee.htm",
@@ -34,8 +29,13 @@
 	})
 	
 	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
-		$scope.addEmployee=(e)=>{
-			$http({
+		$scope.addEmployee=(e,d,j,m)=>{
+			console.log(e)
+			e.departmentId=d;
+			e.jobId=j;
+			e.managerId=m;
+			console.log(e)
+			 $http({
 					url:'employee?action=addEmployee',
 					method:'POST',
 					data:{
@@ -58,7 +58,7 @@
 			err=>{
 				$log.error(err);
 			}
-			);
+			); 
 		}
 		
 	
@@ -72,8 +72,63 @@
 				$log.error(response);
 			}
 		
-		);
+		);};
+		
+		$scope.getAllDepartment=()=>{
+			console.log("getAllDepartment")
+			$http({url:"employee?action=getAllDepartment"})
+			.then(function(response){
+				$scope.deptList=response.data;
+				console.log($scope.deptList)
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);};
+		$scope.getAllJobs=()=>{
+			console.log("getAllJobs")
+			$http({url:"employee?action=getAllJobs"})
+			.then(function(response){
+				$scope.jobList=response.data;
+				console.log($scope.jobList)
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);};
+		$scope.getAllManagers=()=>{
+			console.log("getAllManagers")
+			$http({url:"employee?action=getAllManagers"})
+			.then(function(response){
+				$scope.managerList=response.data;
+				console.log($scope.managerList)
+			},
+		function(response){
+				$log.error(response);
+			}
+		
+		);};
+		$scope.getId=(e)=>{
+			console.log(e)
+			console.log($scope.id)
+			$http({
+				url:'employee?action=getEmployeeById&employeeId='+e,
+				method:'GET'
+				})
+			.then(function(response)
+					{
+						$scope.employees=response.data;
+						console.log(response);
+					},
+				  function(response)
+				  {
+						$log.error(response);
+				  }
+				 )
 		}
+		
 		
 		$scope.deleteEmp=function(e)
 		{
@@ -126,12 +181,23 @@
 </script>
 </head>
 <body x-ng-controller="employeeController">
-<p><a href="#/">Home Page</a></p>
-<p><a href="#/getAllEmployees" x-ng-init='getAllEmployee()'>Get Employee List</a></p>
-<p><a href="#/updateDelEmployee">update/delete Employee</a></p>
-<p><a href="#/addEmployee">Register Employee</a></p>
-<div x-ng-view></div>
-		
+	<p>
+		<a href="#/">Home Page</a>
+	</p>
+	<p>
+		<a href="#/getAllEmployees" x-ng-init='getAllEmployee()'>Get
+			Employee List</a>
+	</p>
+	<p>
+		<a href="#/updateDelEmployee">update/delete Employee</a>
+	</p>
+	<p>
+		<a href="#/addEmployee"
+			x-ng-init='getAllDepartment();getAllJobs();getAllManagers()'>Register
+			Employee</a>
+	</p>
+	<div x-ng-view></div>
+
 
 </body>
 

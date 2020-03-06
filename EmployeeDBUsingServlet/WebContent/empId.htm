@@ -2,16 +2,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee Detail</title>
+<title>Insert title here</title>
 </head>
-<body>	
-	<table border="2px">
+<body>
+<form>
+
+	Employee Id:<input type="text" x-ng-model="id"/>
+	<input type="button" x-ng-click="getId(id)" value="Click"/>
+	
+</form>
+
+<table border="2px">
 			<tr>
 				<th>Employee Id</th>
 				<th>Full Name </th>
 				<th>Total Salary</th>
 				<th>Contact Number</th>
-				<th>hireDate </th>
+				<th>tax </th>
 				<th>EmailID </th>
 			</tr>
 				<tr x-ng-repeat="employee in employees">
