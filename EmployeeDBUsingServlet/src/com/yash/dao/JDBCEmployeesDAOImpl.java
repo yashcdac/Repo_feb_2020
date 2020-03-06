@@ -18,7 +18,7 @@ import com.yash.integrate.ConnectionManager;
 public class JDBCEmployeesDAOImpl implements EmployeesDAO {
 	  static Logger log = Logger.getLogger(JDBCEmployeesDAOImpl.class.getName());
 	    static {
-	        BasicConfigurator.configure();
+	        //BasicConfigurator.configure();
 	    }
 	
 	private static final String EMPLOYEEID="employee_id";

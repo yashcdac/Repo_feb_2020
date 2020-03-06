@@ -15,7 +15,7 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 	 private DepartmentsDAO departmentsDAO;
 		public DepartmentsServiceImpl() {
 			this.departmentsDAO=FactoryEmployeeDB.createDepartmentsDAO();
-	        BasicConfigurator.configure();
+	        //BasicConfigurator.configure();
 
 		}
 	@Override
