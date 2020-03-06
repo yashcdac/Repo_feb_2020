@@ -13,4 +13,5 @@ public interface EmployeesService {
 	public EmployeesModel retrieveEmployeeTax(int employeeId);
 	public List<ManagersModel> getManagers();
 	public String updateEmployee(AllEmployeesModel employeesModel);
+	public EmployeesModel getEmployeeById(int employeeId);
 }
