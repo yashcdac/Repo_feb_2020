@@ -220,6 +220,10 @@ public class EmployeeController extends HttpServlet {
 		{
 			updateEmployee(request, response);
 		}
+		if(action.contentEquals("deleteEmployee"))
+		{
+			updateEmployee(request, response);
+		}
 	}
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
