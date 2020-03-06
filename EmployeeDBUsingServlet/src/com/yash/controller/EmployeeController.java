@@ -309,38 +309,33 @@ public class EmployeeController extends HttpServlet {
 		}
 	}
 
-	protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, JSONException {
-		PrintWriter out=response.getWriter();
-		
-		BufferedReader bufferedReader = request.getReader();
-		StringBuilder sb = new StringBuilder();
-		String str = null;
-		while ((str = bufferedReader.readLine()) != null) {
-			sb.append(str);
+	 protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, JSONException {
+			PrintWriter out=response.getWriter();
+			
+			BufferedReader bufferedReader = request.getReader();
+			StringBuilder sb = new StringBuilder();
+			String str = null;
+			while ((str = bufferedReader.readLine()) != null) {
+				sb.append(str);
+			}
+			JSONObject jsonObject = new JSONObject(sb.toString());
+			int employeeId=jsonObject.getInt("employeeId");
+			out.println(jsonObject.getInt("employeeId")+"hii");
+	    	AllEmployeesModel employeesModel=new AllEmployeesModel();
+	    	
+	    	employeesModel.setEmployeeId(employeeId);
+	    	String outcome=employeeService.deleteEmployee(employeesModel);
+	    	
+	    	List<AllEmployeesModel> allEmployeesList=employeeService.retrieveAllEmployees();
+	    	for(AllEmployeesModel employees:allEmployeesList) {
+	    		if(employeesModel.getEmployeeId()==employeeId) {
+	    			employeesModel=employees;
+	    		}
+	    	} 
+	    	
+	    	 request.setAttribute(EMPLOYEES_MODEL,employeesModel);
+  			 request.setAttribute(OPERATION, "Below Employee record deleted Successfully");
+	    
 		}
-		JSONObject jsonObject = new JSONObject(sb.toString());
-		int employeeId=jsonObject.getInt("employeeId");
-			
-				
-			
-      
-    	
-    	AllEmployeesModel employeesModel=new AllEmployeesModel();
-    	
-    	employeesModel.setEmployeeId(employeeId);
-    	String outcome=employeeService.deleteEmployee(employeesModel);
-    	out.println(jsonObject.getInt("employeeId")+"hii");
-    	List<AllEmployeesModel> allEmployeesList=employeeService.retrieveAllEmployees();
-    	for(AllEmployeesModel employees:allEmployeesList) {
-    		if(employeesModel.getEmployeeId()==employeeId) {
-    			employeesModel=employees;
-    		}
-    	}
-    	
-				   		
-  			
-		 
-	
-	}
 }

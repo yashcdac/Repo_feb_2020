@@ -28,7 +28,7 @@ public class Employees {
 	private double salary;
 	private double commissionPCT;
 	private int managerId;
-	private int departmentId;
+	private int departmentId; 
 	//transient non persistent not representing any column
 	private transient double tax;
 	private Departments departments;
