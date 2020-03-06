@@ -113,16 +113,15 @@ hr {
 </style>
 <body>
 
-<h2>Modal Signup Form</h2>
+<h2>Employee Signup Form</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
 
 <div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  
   <form class="modal-content">
     <div class="container">
       <h1>Employee Sign Up</h1>
-    
       <hr>
       <label for="employee.employeeId"><b>employeeId</b></label>
       <input type="text" placeholder="Enter employeeId" x-ng-model="employee.employeeId" required>
@@ -134,13 +133,14 @@ hr {
       <input type="text" placeholder="Enter lastName" x-ng-model="employee.lastName" required>
       
       <label for="employee.email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" x-ng-model="employee.email" required>
+      <input type="text" placeholder="Enter Email" x-ng-model="employee.email" required>
+      
+
       
       <label for="employee.phoneNumber"><b>Phone Number</b></label>
       <input type="text" placeholder="Enter phoneNumber" x-ng-model="employee.phoneNumber" required>
       
-      <label for="employee.hireDate"><b>hireDate</b></label>
-      <input type="date" placeholder="Enter hireDate" x-ng-model="employee.hireDate" required>
+     
       
       <label for="employee.jobId"><b>jobId</b></label>
       <input type="text" placeholder="Enter jobId" x-ng-model="employee.jobId" required>
@@ -154,13 +154,31 @@ hr {
       <label for="employee.managerId"><b>managerId</b></label>
       <input type="text" placeholder="Enter managerId" x-ng-model="employee.managerId" required>
       
-      <label for="employee.departmentId"><b>departmentId</b></label>
-      <input type="text" placeholder="Enter departmentId" x-ng-model="employee.departmentId" required>
+      <!-- <label for="employee.departmentId"><b>departmentId</b></label>
+      <input type="text" placeholder="Enter departmentId" x-ng-model="employee.departmentId" required> -->
+      
+       <label for="employee.hireDate"><b>hireDate</b></label>
+      <input type="date" placeholder="Enter hireDate" x-ng-model="employee.hireDate" required>
+      
+       <label for="departments"> Select Department: </label><br>
+	    <select name="singleSelect" x-ng-model="dept.departmentId" >
+	      <option x-ng-repeat='dept in deptList' x-ng-value='dept.departmentId'>{{dept.departmentName}}</option>
+	    </select>
+	    
+	    <label for="jobs"> Select Job: </label><br>
+	    <select name="singleSelect" x-ng-model="job.jobId" >
+	      <option x-ng-repeat='job in jobList' x-ng-value='job.jobId'>{{job.jobTitle}}</option>
+	    </select>
+	    
+	    <label for="managers"> Select Manager: </label><br>
+	    <select name="singleSelect" x-ng-model="manager.employeeId" >
+	      <option x-ng-repeat='manager in managerList' x-ng-value='manager.employeeId'>{{manager.firstName}}</option>
+	    </select>
 
-
+      
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn" x-ng-click='addEmployee(employee)'>Sign Up</button>
+        <button type="submit" class="signupbtn" x-ng-click='addEmployee(employee,dept.departmentId,job.jobId,manager.employeeId)'>Sign Up</button>
       </div>
     </div>
   </form>
