@@ -216,6 +216,12 @@ public class EmployeeController extends HttpServlet {
 
 		String action = request.getParameter("action");
 		System.out.println(action);
+		
+		if(action.contentEquals("updateEmployee"))
+		{
+			newEmployee(request, response);
+		}
+		
 		if(action.contentEquals("updateEmployee"))
 		{
 			updateEmployee(request, response);

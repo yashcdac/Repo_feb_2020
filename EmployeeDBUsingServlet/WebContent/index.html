@@ -25,7 +25,12 @@
 		.when("/updateEmployee",{
 			templateUrl:"updateEmployeeForm.htm",
 			controller:'employeeController'
-		});
+		})
+		.when('/getEmployeeById',{
+			templateUrl:'empId.htm',
+			controller:'employeeController'
+		})
+		;
 	})
 	
 	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
@@ -195,6 +200,9 @@
 		<a href="#/addEmployee"
 			x-ng-init='getAllDepartment();getAllJobs();getAllManagers()'>Register
 			Employee</a>
+	</p>
+	<p>
+		<a href="#/getEmployeeById">Get Employee By Id</a>
 	</p>
 	<div x-ng-view></div>
 
