@@ -284,7 +284,12 @@ public class EmployeeController extends HttpServlet {
 
 	protected void updateEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		BufferedReader bufferReader = request.getReader();
+		StringBuilder sb=new StringBuilder();
+		String str=null;
+		while ((str=bufferReader.readLine())!=null) {
+			sb.append(str);
+		};
 		
 		try {
 			JSONObject jsonObject = new JSONObject(sb.toString());
