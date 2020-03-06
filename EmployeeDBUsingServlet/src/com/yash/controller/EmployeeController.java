@@ -270,11 +270,7 @@ public class EmployeeController extends HttpServlet {
 		}
 		JSONObject jsonObject = new JSONObject(sb.toString());
 		int employeeId=jsonObject.getInt("employeeId");
-			
-				
-			
-      
-    	
+		
     	AllEmployeesModel employeesModel=new AllEmployeesModel();
     	
     	employeesModel.setEmployeeId(employeeId);
@@ -286,10 +282,6 @@ public class EmployeeController extends HttpServlet {
     			employeesModel=employees;
     		}
     	}
-    	
-				   		
-  			
-		 
-	
+    
 	}
 }
