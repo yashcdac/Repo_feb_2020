@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 <pagination x-ng-model="currentPage" total-items="employees.length"
 			max-size="maxSize" boundary-links="true"> </pagination>
  <table border="2px">
@@ -56,5 +57,53 @@
 		
 		</table>
 
+=======
+<table border="2px">
+			<tr>
+				<th>Employee Id</th><th>Employee FirstName </th><th>Employee LastName</th><th>Employee EmailID </th>
+				<th>phoneNumber</th><th>hireDate </th><th>jobId</th><th>salary </th>
+				<th>commissionPCT</th><th>managerId </th><th>departmentId</th>
+			</tr>
+				<tr x-ng-repeat="employee in employees">
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.employeeId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.employeeId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.firstName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.firstName}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.lastName}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.lastName}}</td>
+				
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.email}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.email}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.phoneNumber}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.phoneNumber}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.hireDate}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.hireDate}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.jobId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.jobId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.salary}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.salary}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.commissionPCT}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.commissionPCT}}</td>
+				
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.managerId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.managerId}}</td>
+				
+				<td x-ng-if="$odd" style="background-color:#ffddcc">{{employee.departmentId}}</td>
+				<td x-ng-if="$even" style="background-color:#e6e6ff">{{employee.departmentId}}</td>
+				
+				
+			</tr>
+		
+		</table>
+>>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 </body>
 </html>
