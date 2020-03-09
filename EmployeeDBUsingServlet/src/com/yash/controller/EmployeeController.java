@@ -228,7 +228,12 @@ public class EmployeeController extends HttpServlet {
 		}
 		if(action.contentEquals("deleteEmployee"))
 		{
-			updateEmployee(request, response);
+			try {
+				deleteEmployee(request, response);
+			} catch (ServletException | IOException | JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -338,6 +343,7 @@ public class EmployeeController extends HttpServlet {
 	    	employeesModel.setEmployeeId(employeeId);
 	    	out.println(employeesModel);
 	    	String outcome=employeeService.deleteEmployee(employeesModel);
+	    	
 	    	out.println(outcome+"outcome");
 	    	List<AllEmployeesModel> allEmployeesList=employeeService.retrieveAllEmployees();
 	    	for(AllEmployeesModel employees:allEmployeesList) {
@@ -346,17 +352,7 @@ public class EmployeeController extends HttpServlet {
 	    		}
 	    	}
 	    	
-		/*
-		 * List<AllEmployeesModel>
-		 * allEmployeesList=employeeService.retrieveAllEmployees();
-		 * for(AllEmployeesModel employees:allEmployeesList) {
-		 * if(employeesModel.getEmployeeId()==employeeId) { employeesModel=employees; }
-		 * }
-		 * 
-		 * request.setAttribute(EMPLOYEES_MODEL,employeesModel);
-		 * request.setAttribute(OPERATION,
-		 * "Below Employee record deleted Successfully");
-		 */
+		
 	    
 		}
 }
