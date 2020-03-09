@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<pagination x-ng-model="currentPage" total-items="employees.length"
+			max-size="maxSize" boundary-links="true"> </pagination>
+ <table border="2px">
+			<tr>
+				<th>Employee Id</th><th>Employee FirstName </th><th>Employee LastName</th><th>Employee EmailID </th>
+				<th>phoneNumber</th><th>hireDate </th><th>jobId</th><th>salary </th>
+				<th>commissionPCT</th><th>managerId </th><th>departmentId</th>
+			</tr>
+				<tr x-ng-repeat="employee in filteredEmployees">
+				
+				<td  style="background-color:#ffddcc">{{employee.employeeId}}</td>
+				
+				
+				
+				<td  style="background-color:#ffddcc">{{employee.firstName}}</td>
+				
+				
+				<td style="background-color:#ffddcc">{{employee.lastName}}</td>
+				
+				
+				
+				<td style="background-color:#ffddcc">{{employee.email}}</td>
+				
+				
+				<td style="background-color:#ffddcc">{{employee.phoneNumber}}</td>
+				
+				
+				<td style="background-color:#ffddcc">{{employee.hireDate}}</td>
+				
+				
+				<td style="background-color:#ffddcc">{{employee.jobId}}</td>
+				
+				
+				<td style="background-color:#ffddcc">{{employee.salary}}</td>
+				
+				
+				<td style="background-color:#ffddcc">{{employee.commissionPCT}}</td>
+				
+				
+				
+				<td style="background-color:#ffddcc">{{employee.managerId}}</td>
+				
+				
+				<td style="background-color:#ffddcc">{{employee.departmentId}}</td>
+				
+				
+				
+			</tr>
+		
+		</table>
+
+</body>
+</html>

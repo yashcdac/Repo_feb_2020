@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html x-ng-app="employeeApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+
+<script src="controllers/EmployeeController.js"></script>
+</head>
+
+
+<body x-ng-controller="employeeController">
+	<p>
+		<a href="#/">Home Page</a>
+	</p>
+	<p>
+		<a href="#/getAllEmployees" x-ng-init='getAllEmployee()'>Get
+			Employee List</a>
+		
+	</p>
+	<p>
+		<a href="#/updateDelEmployee">update/delete Employee</a>
+	</p>
+	<p>
+		<a href="#/addEmployee">Register
+			Employee</a>
+	</p>
+	<p>
+		<a href="#/getEmployeeById">Get Employee By Id</a>
+	</p>
+	<div x-ng-view></div>
+
+
+</body>
+
+</html>
