@@ -23,7 +23,7 @@
 			controller:'employeeController'
 		})
 		.when("/updateEmployee",{
-			templateUrl:"updateEmployeeForm.htm",
+			templateUrl:"updateEmp.htm",
 			controller:'employeeController'
 		})
 		.when('/getEmployeeById',{
@@ -33,7 +33,7 @@
 		;
 	})
 	
-	employeeApp.controller('employeeController',['$scope','$http','$log',function($scope,$http,$log){
+	employeeApp.controller('employeeController',['$rootScope','$scope','$http','$log','$location',function($rootScope,$scope,$http,$log,$location){
 		$scope.addEmployee=(e,d,j,m)=>{
 			console.log(e)
 			e.departmentId=d;
@@ -116,22 +116,25 @@
 		
 		);};
 		$scope.getId=(e)=>{
-			console.log(e)
-			console.log($scope.id)
-			$http({
-				url:'employee?action=getEmployeeById&employeeId='+e,
-				method:'GET'
-				})
-			.then(function(response)
-					{
-						$scope.employees=response.data;
-						console.log(response);
-					},
-				  function(response)
-				  {
-						$log.error(response);
-				  }
-				 )
+			//console.log(e)
+			//console.log($scope.id)
+			if(e!=null){
+				$http({
+					url:'employee?action=getEmployeeById&employeeId='+e,
+					method:'GET'
+					})
+				.then(function(response)
+						{
+							$scope.searchEmployee=response.data;
+							console.log(response);
+						},
+					  function(response)
+					  {
+							$log.error(response);
+					  }
+					 )
+			}
+			
 		}
 		
 		
@@ -155,7 +158,16 @@
 			
 			
 		}
+		$scope.getUpdateEmployee=(employee)=>{
+			console.log('getUpdateEmployee');
+			
+			$rootScope.updateEmp=employee;
+			
+			$location.path('updateEmployee');
+		};
+		
 		$scope.updateEmployee=function(e){
+			console.log('updateEmployee');
 			$http({
 				url:'employee?action=updateEmployee',
 				method:'POST',
@@ -174,13 +186,11 @@
 					 }
 			}).then((res)=>{
 				console.log(res.data);
-				$scope.message=res.data;
+				$rootScope.message=res.data;
 			},(err)=>{
 				$log.error(err);
 			});
 		};
-	
-	
 		
 	}]);
 </script>

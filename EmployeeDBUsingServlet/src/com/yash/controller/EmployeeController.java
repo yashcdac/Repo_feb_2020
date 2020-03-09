@@ -337,20 +337,14 @@ public class EmployeeController extends HttpServlet {
 			
 			JSONObject jsonObject = new JSONObject(sb.toString());
 			int employeeId=jsonObject.getInt("employeeId");
-			out.println(jsonObject.getInt("employeeId")+"hii");
+			//out.println(jsonObject.getInt("employeeId")+"hii");
 			
 			AllEmployeesModel employeesModel=new AllEmployeesModel();
 	    	employeesModel.setEmployeeId(employeeId);
 	    	out.println(employeesModel);
 	    	String outcome=employeeService.deleteEmployee(employeesModel);
 	    	
-	    	out.println(outcome+"outcome");
-	    	List<AllEmployeesModel> allEmployeesList=employeeService.retrieveAllEmployees();
-	    	for(AllEmployeesModel employees:allEmployeesList) {
-	    		if(employeesModel.getEmployeeId()==employeeId) {
-	    			employeesModel=employees;
-	    		}
-	    	}
+	    	
 	    	
 		
 	    
