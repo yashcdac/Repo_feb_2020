@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<pagination x-ng-model="currentPage" total-items="employees.length"
+			max-size="maxSize" boundary-links="true"> </pagination>
+	<table>
+		<tr>
+			<th>Employee Id</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>PhoneNumber</th>
+			<th>Hire Date</th>
+			<th>Job Id</th>
+			<th>Salary</th>
+			<th>Commission Pct</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+
+		<tr x-ng-repeat="employee in filteredEmployees">
+			<td>{{employee.employeeId}}</td>
+			<td>{{employee.firstName}}</td>
+			<td>{{employee.lastName}}</td>
+			<td>{{employee.email}}</td>
+			<td>{{employee.phoneNumber}}</td>
+			<td>{{employee.hireDate}}</td>
+			<td>{{employee.jobId}}</td>
+			<td>{{employee.salary}}</td>
+			<td>{{employee.commissionPCT}}</td>
+			<td>
+				<form >
+					<input type="submit" value="Update"
+						x-ng-click="getUpdateEmployee(employee)" />
+
+				</form>
+			</td>
+			<td>
+				<form>
+					<input type="submit" value="Delete"
+						x-ng-click="deleteEmp(employee.employeeId)" />
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

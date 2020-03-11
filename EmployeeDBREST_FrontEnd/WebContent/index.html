@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html  x-ng-app="employeeApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="angular-route.js"></script>
+<script type="text/javascript" src="angular-resource.min.js"></script>
+<script type="text/javascript">
+	var employeeApp=angular.module("employeeApp",['ui.bootstrap','ngResource','ngRoute']);
+	
+	employeeApp.config(['$routeProvider',function($routeProvider){
+		$routeProvider
+		.when("/addEmployee",{
+			templateUrl:"addEmployee.htm",
+			controller:'employeeController'
+		})
+		.when("/getAllEmployees",{
+			templateUrl:"employeeList.htm",
+			controller:'employeeController'
+		})
+		.when("/updateDelEmployee",{
+			templateUrl:"updateDelList.htm",
+			controller:'employeeController'
+		})
+		.when("/updateEmployee",{
+			templateUrl:"updateEmp.htm",
+			controller:'employeeController'
+		})
+		.when('/getEmployeeById',{
+			templateUrl:'empId.htm',
+			controller:'employeeController'
+		})
+		
+	}]);
+	
+	employeeApp.factory('employeeService',['$resource',function ($resource){
+		return $resource("http://localhost:8082\:8082/employee-app/employees/:empId",{},{
+			query: {method:"GET", isArray: true},
+			create : {method:"POST"},
+			get : {method:"GET",isArray:true},
+			remove :{method:"DELETE"},
+			update:{method:"PUT"}
+		});
+	}]);
+	
+	employeeApp.controller('employeeController',['employeeService','$scope','$location',function(employeeService, $scope, $location){
+		$scope.getEmployee=()=>{
+			console.log("tryry")
+		};
+		
+		$scope.getEmployeeId=(id)=>{
+			
+		};
+		
+		$scope.persistEmployee=(employee)=>{
+			
+		};
+		
+		$scope.updateEmployee=(employee)=>{
+			
+		};
+		
+		$scope.removeEmployee=(id)=>{
+			
+		};
+		$scope.filteredEmployees = []
+	      ,$scope.currentPage = 1
+	      ,$scope.numPerPage = 10
+	      ,$scope.maxSize = 5;
+	      
+	     
+			 
+			 $scope.$watch('currentPage + numPerPage', function() {
+		    	 console.log('$watch')
+		        var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+		        , end = begin + $scope.numPerPage;
+		        
+		    	 $scope.filteredEmployees = $scope.employees.slice(begin, end);
+		        
+		        console.log($scope.filteredEmployees);
+		      });
+		
+		
+	}])
+
+	
+	
+</script>
+</head>
+<body x-ng-controller="employeeController">
+	<p>
+		<a href="#/">Home Page</a>
+	</p>
+	<p>
+		<a href="#/getAllEmployees" x-ng-init='getEmployee()'>Get Employee List</a>
+	</p>
+	<p>
+		<a href="#/updateDelEmployee">update/delete Employee</a>
+	</p>
+	<p>
+
+		<a href="#/addEmployee">Register Employee</a>
+	</p>
+	<p>
+		<a href="#/getEmployeeById">Get Employee By Id</a>
+	</p>
+	<div x-ng-view></div>
+
+
+</body>
+</html>
