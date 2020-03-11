@@ -47,25 +47,35 @@
 		});
 	}]);
 	
-	employeeApp.controller('employeeController',['employeeService','$scope','$location',function(employeeService, $scope, $location){
+	employeeApp.controller('employeeController',['employeeService','$scope','$rootScope','$location',function(employeeService, $scope,$rootScope, $location){
 		$scope.getEmployee=()=>{
-			console.log("tryry")
+			employeeService.query({},function(data){
+				$scope.employees=data;
+			})
 		};
 		
 		$scope.getEmployeeId=(id)=>{
-			
+			employeeService.get({empId:id},function(data){
+				$scope.searchEmployee=data;
+			})
 		};
 		
 		$scope.persistEmployee=(employee)=>{
-			
+			employeeService.create(employee,function(data){
+				console.log(data);
+			})
 		};
 		
 		$scope.updateEmployee=(employee)=>{
-			
+			employeeService.update({empId:employee.employeeId},employee,function(data){
+				console.log(data);
+			})
 		};
 		
 		$scope.removeEmployee=(id)=>{
-			
+			employeeService.remove({empId:id},function(data){
+				console.log(data);
+			})
 		};
 		$scope.filteredEmployees = []
 	      ,$scope.currentPage = 1
@@ -83,7 +93,11 @@
 		        
 		        console.log($scope.filteredEmployees);
 		      });
-		
+			 $scope.getUpdateEmployee=(employee)=>{
+				 $rootScope.updateEmp=employee;
+				 console.log("update employee"+JSON.stringify($rootScope.updateEmp))
+				 $location.path('updateEmployee');
+			 }		
 		
 	}])
 
