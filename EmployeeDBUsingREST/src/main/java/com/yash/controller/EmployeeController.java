@@ -3,6 +3,7 @@ package com.yash.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,35 +17,36 @@ import com.yash.entities.Employee;
 import com.yash.service.EmployeeService;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/employee-app")
+@CrossOrigin(origins = "http://localhost:8080")
 public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
 
-	@GetMapping("/")
+	@GetMapping("/employees")
 	public List<Employee> getAllEmps() {
 		return employeeService.getAllEmps();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/employees/{id}")
 	public Employee getEmpById(@PathVariable("id") int employeeId) {
 		return employeeService.getEmpById(employeeId);
 	}
 
-	@PutMapping("/updateEmployee/{id}")
+	@PutMapping("/employees/{id}")
 	public String updateEmployee(@RequestBody Employee employee, @PathVariable("id") int id) {
 
 		return employeeService.updateEmployee(employee);
 	}
 
-	@PostMapping("/insertEmployee")
+	@PostMapping("/employees")
 	public String insertEmployee(@RequestBody Employee employee) {
 		System.out.println("aaaaaaaaaaaaa");
 		return employeeService.insertEmployee(employee);
 	}
 
-	@DeleteMapping("/deleteEmployee/{id}")
+	@DeleteMapping("/employees/{id}")
 	public String deleteEmployee(@PathVariable("id") int id) {
 
 		return employeeService.deleteEmployee(id);
