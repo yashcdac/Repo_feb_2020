@@ -30,9 +30,7 @@ import com.yash.service.DepartmentsService;
 import com.yash.service.EmployeesService;
 import com.yash.service.JobsService;
 
-/**
- * Servlet implementation class EmployeeController
- */
+
 @WebServlet("/employee")
 
 public class EmployeeController extends HttpServlet {
@@ -217,7 +215,11 @@ public class EmployeeController extends HttpServlet {
 		String action = request.getParameter("action");
 		System.out.println(action);
 		
+<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 <<<<<<< HEAD
+=======
+
+>>>>>>> aa9f34d commit
 		if(action.contentEquals("addEmployee"))
 		{
 			newEmployee(request, response);
@@ -269,6 +271,7 @@ public class EmployeeController extends HttpServlet {
 				
 				String hireDateReq=jsonObject.getString("hireDate");
 		    	LocalDate hireDate=DateConverter.convertLocaleDate(hireDateReq.substring(0,10), "-");
+<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 				String jobId = jsonObject.getString("jobId");
 				double salary = jsonObject.getDouble("salary");
 				double commissionPCT = jsonObject.getDouble("commissionPCT");
@@ -398,6 +401,9 @@ public class EmployeeController extends HttpServlet {
 				LocalDate hireDate = LocalDate.parse(jsonObject.getString("hireDate"));
 				hireDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				System.out.println(hireDate);
+=======
+		    	
+>>>>>>> aa9f34d commit
 				String jobId = jsonObject.getString("jobId");
 				double salary = jsonObject.getDouble("salary");
 				double commissionPCT = jsonObject.getDouble("commissionPCT");
@@ -480,10 +486,14 @@ public class EmployeeController extends HttpServlet {
 	    	out.println(employeesModel);
 	    	String outcome=employeeService.deleteEmployee(employeesModel);
 	    	
+<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 	    	
 	    	
 		
 >>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
+=======
+
+>>>>>>> aa9f34d commit
 	    
 		}
 }
