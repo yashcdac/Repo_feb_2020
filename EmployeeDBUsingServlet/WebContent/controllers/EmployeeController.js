@@ -1,13 +1,5 @@
 	var employeeApp=angular.module("employeeApp",['ui.bootstrap','ngRoute']);
-<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
-<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
 
-=======
-	
->>>>>>> 99833f2 pagination done
-=======
-
->>>>>>> a62b5f1 jhxdk
 	employeeApp.config(function($routeProvider){
 		$routeProvider
 		.when("/addEmployee",{

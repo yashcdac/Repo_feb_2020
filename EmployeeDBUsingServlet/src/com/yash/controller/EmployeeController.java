@@ -214,12 +214,7 @@ public class EmployeeController extends HttpServlet {
 
 		String action = request.getParameter("action");
 		System.out.println(action);
-		
-<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
-<<<<<<< HEAD
-=======
-
->>>>>>> aa9f34d commit
+	
 		if(action.contentEquals("addEmployee"))
 		{
 			newEmployee(request, response);
@@ -271,139 +266,6 @@ public class EmployeeController extends HttpServlet {
 				
 				String hireDateReq=jsonObject.getString("hireDate");
 		    	LocalDate hireDate=DateConverter.convertLocaleDate(hireDateReq.substring(0,10), "-");
-<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
-				String jobId = jsonObject.getString("jobId");
-				double salary = jsonObject.getDouble("salary");
-				double commissionPCT = jsonObject.getDouble("commissionPCT");
-				int managerId = jsonObject.getInt("managerId");
-				int departmentId = jsonObject.getInt("departmentId");
-				
-				
-				model.setEmployeeId(employeeId);
-				model.setFirstName(firstName);
-				model.setLastName(lastName);
-				model.setEmail(email);
-				model.setPhoneNumber(phoneNumber);
-				model.setHireDate(hireDate);
-				model.setJobId(jobId);
-				model.setSalary(salary);
-				model.setCommissionPCT(commissionPCT);
-				model.setManagerId(managerId);
-				model.setDepartmentId(departmentId);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			String status=employeeService.registerEmployee(model);
-			System.out.println(status);
-
-		
-
-	}
-
-	protected void updateEmployeeForm(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-	}
-
-	protected void updateEmployee(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		BufferedReader bufferReader = request.getReader();
-		StringBuilder sb=new StringBuilder();
-		String str=null;
-		while ((str=bufferReader.readLine())!=null) {
-			sb.append(str);
-		};
-		
-		try {
-			JSONObject jsonObject = new JSONObject(sb.toString());
-			AllEmployeesModel e=new AllEmployeesModel();
-			e.setEmployeeId(jsonObject.getInt("employeeId"));
-			e.setEmail(jsonObject.getString("email"));
-			e.setPhoneNumber(jsonObject.getString("phoneNumber"));
-			e.setJobId(jsonObject.getString("jobId"));
-			e.setDepartmentId(jsonObject.getInt("departmentId"));
-			e.setManagerId(jsonObject.getInt("managerId"));
-			e.setCommissionPCT(jsonObject.getDouble("managerId"));
-			e.setSalary(jsonObject.getDouble("salary"));
-			String status=employeeService.updateEmployee(e);
-			response.getWriter().write(status);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	 protected void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException, JSONException {
-			
-			
-			BufferedReader bufferedReader = request.getReader();
-			StringBuilder sb = new StringBuilder();
-			String str = null;
-			while ((str = bufferedReader.readLine()) != null) {
-				sb.append(str);
-			}
-			System.out.println("siddhant");
-			JSONObject jsonObject = new JSONObject(sb.toString());
-			int employeeId=jsonObject.getInt("employeeId");
-			
-			
-			AllEmployeesModel employeesModel=new AllEmployeesModel();
-	    	employeesModel.setEmployeeId(employeeId);
-	    	
-	    	String outcome=employeeService.deleteEmployee(employeesModel);
-	    	
-=======
-		if(action.contentEquals("updateEmployee"))
-		{
-			newEmployee(request, response);
-		}
-		
-		if(action.contentEquals("updateEmployee"))
-		{
-			updateEmployee(request, response);
-		}
-		if(action.contentEquals("deleteEmployee"))
-		{
-			try {
-				deleteEmployee(request, response);
-			} catch (ServletException | IOException | JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		BufferedReader bufferedReader = request.getReader();
-		StringBuilder sb = new StringBuilder();
-		String str = null;
-		while ((str = bufferedReader.readLine()) != null) {
-			sb.append(str);
-		}
-		
-			JSONObject jsonObject;
-			AllEmployeesModel model=new AllEmployeesModel();
-			try {
-				jsonObject = new JSONObject(sb.toString());
-				System.out.println(jsonObject.getString("hireDate"));
-				
-				int employeeId = jsonObject.getInt("employeeId");
-				String firstName = jsonObject.getString("firstName");
-				String lastName = jsonObject.getString("lastName");
-				String email = jsonObject.getString("email");
-				String phoneNumber = jsonObject.getString("phoneNumber");
-				//LocalDate localDate=new LocalDate
-				LocalDate hireDate = LocalDate.parse(jsonObject.getString("hireDate"));
-				hireDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				System.out.println(hireDate);
-=======
-		    	
->>>>>>> aa9f34d commit
 				String jobId = jsonObject.getString("jobId");
 				double salary = jsonObject.getDouble("salary");
 				double commissionPCT = jsonObject.getDouble("commissionPCT");
@@ -484,16 +346,6 @@ public class EmployeeController extends HttpServlet {
 			AllEmployeesModel employeesModel=new AllEmployeesModel();
 	    	employeesModel.setEmployeeId(employeeId);
 	    	out.println(employeesModel);
-	    	String outcome=employeeService.deleteEmployee(employeesModel);
-	    	
-<<<<<<< Upstream, based on branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
-	    	
-	    	
-		
->>>>>>> branch 'master' of https://github.com/yashcdac/Repo_feb_2020.git
-=======
-
->>>>>>> aa9f34d commit
-	    
+	    	String outcome=employeeService.deleteEmployee(employeesModel);	    
 		}
 }
