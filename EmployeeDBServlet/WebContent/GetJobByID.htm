@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Get Job By Id</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form>
+	<b>Job Id:</b> 
+	<input type="text" x-ng-model="id" placeholder="Enter Job ID" />
+	<input type="button" x-ng-click="getJobById(id)" value="Click" class="btn btn-info"/>
+	
+</form>
+<br/>
+<table border="1px" x-ng-if='jobs!=null' class="table">
+			<tr class="warning">
+				<th>Job Id</th>
+				<th>Title</th>
+				<th>Min Salary</th>
+				<th>Max Salary </th>
+			</tr>
+			
+			<tr class="success" x-ng-repeat="job in searchJob">
+				
+				<td  style="background-color:#ffddcc">{{job.jobId}}</td>
+				<td style="background-color:#ffddcc">{{job.jobTitle}}</td>
+				<td style="background-color:#ffddcc">{{job.minSalary}}</td>
+				<td style="background-color:#ffddcc">{{job.maxSalary}}</td>
+				
+			</tr>
+		
+		</table>
+</body>
+</html>

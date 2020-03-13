@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h2 class="text-center"><b>Update / Delete Job</b></h2>
+<br/>
+<br/>
+<table border="2px" class="table">
+		<tr>
+			<th>Job Id</th>
+			<th>Job Title</th>
+			<th>Min Salary</th>
+			<th>Max Salary</th>
+			<th>Actions</th>
+		
+		</tr>
+
+		<tr class="success" x-ng-repeat="job in jobs">
+			<td>{{job.jobId}}</td>
+			<td>{{job.jobTitle}}</td>
+			<td>{{job.minSalary}}</td>
+			<td>{{job.maxSalary}}</td>
+		
+			<td colspan="2">
+					<input type="submit" value="Update" x-ng-click="updateJob(job)" class="btn btn-info"/>
+					<input type="submit" value="Delete" x-ng-click="deleteJob(job.jobId)" class="btn btn-info"/>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

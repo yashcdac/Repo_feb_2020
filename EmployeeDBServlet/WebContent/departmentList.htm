@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Department List</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h2 class="text-center"><b><I>Department Details</I></b></h2>
+<pagination x-ng-model="currentPage" total-items="departmentList.length"
+			max-size="maxSize" boundary-links="true"> </pagination>
+			<hr>
+			<br/>
+ <table border="1px" class="table">
+			<tr class="warning">
+				<th>Department Id</th>
+				<th>Name</th>
+				<th>Manager ID</th>
+				<th>Location ID </th>
+			</tr>
+			
+			<tr class="success" x-ng-repeat="department in filteredDepartments">
+				
+				<td  style="background-color:#ffddcc">{{department.departmentId}}</td>
+				
+				<td  style="background-color:#ffddcc">{{department.departmentName}}</td>
+				
+				<td style="background-color:#ffddcc">{{department.managerId}}</td>
+				
+				<td style="background-color:#ffddcc">{{department.locationId}}</td>
+				
+			</tr>
+		
+		</table>
+</body>
+</html>

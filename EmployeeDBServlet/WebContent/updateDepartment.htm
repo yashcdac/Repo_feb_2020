@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h2 class="text-center">Update Department</h2>
+<br/>
+<form action="">
+		<table class="table">
+			<tr>
+				<td class="success">Department Id:</td>
+				<td><input type="text" x-ng-model="updateD.departmentId"></td>
+			</tr>
+			<tr>
+				<td class="success">Name:</td>
+				<td><input type="text" x-ng-model="updateD.departmentName"></td>
+			</tr>
+			<tr>
+				<td class="success">Manager ID:</td>
+				<td><input type="text" x-ng-model="updateD.managerId"></td>
+			</tr>
+			<tr>
+				<td class="success">Location ID:</td>
+				<td><input type="text" x-ng-model="updateD.locationId"></td>
+			</tr>
+			<tr><div class="text-center">
+				<td colspan="2"><input type="button" x-ng-click="DepartmentUpdate()" value="update" class="btn btn-info">
+				<input type="button" value="reset" class="btn btn-info"></td></div>
+			</tr>
+			</table>
+</body>
+</html>

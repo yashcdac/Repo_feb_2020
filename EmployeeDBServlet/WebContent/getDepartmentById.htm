@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form>
+	<b>Department Id:</b> 
+	<input type="text" x-ng-model="id" placeholder="Enter Department ID" />
+	<input type="button" x-ng-click="getDepartmentById(id)" value="Click" class="btn btn-info"/>
+	
+</form>
+<br/>
+<table border="1px" x-ng-if='departmentList!=null' class="table">
+			<tr class="warning">
+				<th>Department Id</th>
+				<th>Department Name</th>
+				<th>Manager Id</th>
+				<th>Location Id </th>
+			</tr>
+			
+			<tr class="success" x-ng-repeat="department in searchDept">
+				
+				<td  style="background-color:#ffddcc">{{department.departmentId}}</td>
+				<td style="background-color:#ffddcc">{{department.departmentName}}</td>
+				<td style="background-color:#ffddcc">{{department.managerId}}</td>
+				<td style="background-color:#ffddcc">{{department.locationId}}</td>
+				
+			</tr>
+		
+		</table>
+</body>
+</html>

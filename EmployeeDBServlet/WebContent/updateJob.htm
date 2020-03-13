@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 class="text-center">Update Job</h2>
+{{updateJob.jobId}}
+<br/>
+<form >
+		<table class="table">
+			<tr>
+				<td class="success">Job Id:</td>
+				<td><input type="text" x-ng-model="updateJ.jobId"></td>
+			</tr>
+			<tr>
+				<td class="success">Title:</td>
+				<td><input type="text" x-ng-model="updateJ.jobTitle"></td>
+			</tr>
+			<tr>
+				<td class="success">Min Salary:</td>
+				<td><input type="text" x-ng-model="updateJ.minSalary"></td>
+			</tr>
+			<tr>
+				<td class="success">Max Salary:</td>
+				<td><input type="text" x-ng-model="updateJ.maxSalary"></td>
+			</tr>
+			<tr><div class="text-center">
+				<td colspan="2"><input type="button" x-ng-click="JobUpdate()" value="update" class="btn btn-info">
+				<input type="button" value="reset" class="btn btn-info"></td></div>
+			</tr>
+			</table>
+</form>
+</body>
+</html>

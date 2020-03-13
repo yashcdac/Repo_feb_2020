@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<title>Create Job</title>
+</head>
+<body>
+<h2  class="text-center"><b>Create New Job </b></h2>
+ <div class="text-center">
+<input type="button" value="Create Job" x-ng-click="openForm()" class="btn btn-info" name="create"/>
+</div>
+<br/>
+<form x-ng-if="addFlag">
+<table  border="2px"  class="table">
+			<tr>
+				<th  class="warning">Job Id</th>
+				<td><input type="text" placeholder="Enter ID" x-ng-model='job.jobId'/></td>	
+			</tr>
+			
+			<tr>
+				<th  class="warning">Job Title </th>
+				<td><input type="text" placeholder="Enter Title" x-ng-model='job.jobTitle'/></td>
+			</tr>
+			
+			<tr>
+				<th  class="warning">Min Salary</th>
+				<td><input type="text" placeholder="Enter Min Salary" x-ng-model='job.minSalary'/></td>
+			</tr>
+			
+			<tr>
+				<th  class="warning">Max Salary</th>
+				<td><input type="text" placeholder="Enter Max Salary" x-ng-model='job.maxSalary'/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="text-center"><input type="submit" value="SUBMIT" class="btn btn-danger" x-ng-click='addJob(job)'/></div></td>
+			</tr>
+</table>
+</form>
+</body>
+</html>
