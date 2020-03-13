@@ -18,7 +18,7 @@
 			<th>Department Id</th>
 			<th>Department Name</th>
 			<th>Manager ID</th>
-			<th>Location ID</th>
+			<!-- <th>Location ID</th> -->
 			<th>Actions</th>
 		
 		</tr>
@@ -26,8 +26,8 @@
 		<tr class="success" x-ng-repeat="department in departmentList">
 			<td>{{department.departmentId}}</td>
 			<td>{{department.departmentName}}</td>
-			<td>{{department.managerId}}</td>
-			<td>{{department.locationId}}</td>
+			<td><span x-ng-if='department.managerId!=0'>{{department.managerId}}</span><span x-ng-if='department.managerId==0'>Manager not assigned</span></td>
+			<!-- <td>{{department.locationId}}</td> -->
 		
 			<td colspan="2">
 					<input type="submit" value="Update" x-ng-click="updateDepartment(department)" class="btn btn-info"/>

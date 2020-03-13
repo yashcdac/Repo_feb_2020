@@ -80,13 +80,14 @@ public class JDBCDepartmentsDAOImpl implements DepartmentsDAO {
 
 	@Override
 	public boolean updateEmployee(Departments departments) throws SQLException, ClassNotFoundException {
+		System.out.println(departments);
 		boolean ifdeptUpdated=false;
 		Connection connection=ConnectionManager.openConnection();
 		PreparedStatement statement=
-				connection.prepareStatement("update departments set department_Name=?,manager_id=?,location_id=? where department_id=?");
+				connection.prepareStatement("update departments set department_name=?, manager_id=? where department_id=?");
 		statement.setString(1,departments.getDepartmentName());
 		statement.setInt(2, departments.getManagerId());
-		statement.setInt(3, departments.getLocationId());
+		statement.setInt(3, departments.getDepartmentId());
 		
 		int rows=statement.executeUpdate();
 		ConnectionManager.closeConnection();

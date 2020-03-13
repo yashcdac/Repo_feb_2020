@@ -27,7 +27,7 @@
 				
 				<td  style="background-color:#ffddcc">{{department.departmentName}}</td>
 				
-				<td style="background-color:#ffddcc">{{department.managerId}}</td>
+				<td style="background-color:#ffddcc"><span x-ng-if='department.managerId!=0'>{{department.managerId}}</span><span x-ng-if='department.managerId==0'>Manager not assigned</span></td>
 				
 				<!-- <td style="background-color:#ffddcc">{{department.locationId}}</td> -->
 				

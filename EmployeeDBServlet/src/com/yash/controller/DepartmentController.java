@@ -171,6 +171,7 @@ public class DepartmentController extends HttpServlet {
 			e.setDepartmentId(jsonObject.getInt("departmentId"));
 			e.setDepartmentName(jsonObject.getString("departmentName"));
 			e.setManagerId(jsonObject.getInt("managerId"));
+			System.out.println(e);
 			//e.setLocationId(jsonObject.getInt("locationId"));
 			departmentService.updateDepartment(e);
 		} catch (JSONException e) {
@@ -196,9 +197,8 @@ public class DepartmentController extends HttpServlet {
 				jsonObject = new JSONObject(sb.toString());
 				
 				
-				 departmentId = jsonObject.getInt("departmentId");
-				 departmentName = jsonObject.getString("departmentName");
-				
+				departmentId = jsonObject.getInt("departmentId");
+				departmentName = jsonObject.getString("departmentName");
 				
 				model.setDepartmentId(departmentId);
 				model.setDepartmentName(departmentName);

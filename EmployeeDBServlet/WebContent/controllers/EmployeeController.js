@@ -261,19 +261,17 @@
 			$location.path('updateDept');
 		}
 
-		$scope.DepartmentUpdate=()=>{
+		$scope.DepartmentUpdate=(dept)=>{
 			console.log('after updat');
+			console.log(dept)
 			
 			$http({
 				url:'department?action=updateDepartment',
 				method:'POST',
 				 data: {
-					 'departmentId':$rootScope.updateD.departmentId,
-					 'departmentName':$rootScope.updateD.departmentName,
-					 'managerID':$rootScope.updateD.managerID,
-					 'locationId':$rootScope.updateD.locationId
-
-						
+					 'departmentId':dept.departmentId,
+					 'departmentName':dept.departmentName,
+					 'managerId':dept.managerId
 					 }
 			}).then((res)=>{
 				console.log(res.data);
