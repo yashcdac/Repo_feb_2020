@@ -6,6 +6,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import com.yash.dao.EmployeesDAO;
 import com.yash.entities.Departments;
+import com.yash.entities.EmpLogin;
 import com.yash.entities.Employees;
 import com.yash.exception.NoEmployeeFoundException;
 import com.yash.exception.SalaryNotValidException;
@@ -249,4 +250,10 @@ public class EmployeesServiceImpl implements EmployeesService {
 		}
 		return employeesModel;
 	}
+	
+	public EmpLogin login(String username,String password) throws ClassNotFoundException, SQLException {
+		EmpLogin del=employeesDAO.login(username,password);
+		return del;
+	}
+
 }

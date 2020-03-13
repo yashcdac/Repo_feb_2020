@@ -3,23 +3,25 @@ package com.yash.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import com.yash.converter.DateConverter;
+import com.yash.entities.EmpLogin;
 import com.yash.helper.FactoryEmployeeDB;
 import com.yash.model.AllEmployeesModel;
 import com.yash.model.DepartmentsModel;
@@ -238,7 +240,59 @@ public class EmployeeController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		if(action.contentEquals("login"))
+		{
+			try {
+				try {
+					login(request, response);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
 	}
+	protected void login(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, JSONException, ClassNotFoundException, SQLException {
+		
+		
+		BufferedReader bufferedReader = request.getReader();
+		StringBuilder sb = new StringBuilder();
+		String str = null;
+		while ((str = bufferedReader.readLine()) != null) {
+			sb.append(str);
+		}
+		System.out.println(sb);
+		JSONObject jsonObject = new JSONObject(sb.toString());
+		String username=jsonObject.getString("username");
+		String password=jsonObject.getString("password");
+		//out.println(jsonObject.getInt("employeeId")+"hii");
+		
+    	EmpLogin outcome=employeeService.login(username,password);
+    	String jsonData;
+    	ArrayList<EmpLogin> el=new ArrayList<>();
+    	el.add(outcome);
+		try {
+			jsonData = JSONObject.valueToString( el);
+			response.setContentType("application/json");
+			ServletOutputStream sos=response.getOutputStream();
+			sos.write(jsonData.getBytes());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
 
 	protected void newEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

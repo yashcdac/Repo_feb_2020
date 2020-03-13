@@ -1,5 +1,8 @@
 package com.yash.service;
+import java.sql.SQLException;
 import java.util.List;
+
+import com.yash.entities.EmpLogin;
 import com.yash.model.AllEmployeesModel;
 import com.yash.model.EmployeesModel;
 import com.yash.model.ManagersModel;
@@ -14,4 +17,7 @@ public interface EmployeesService {
 	public List<ManagersModel> getManagers();
 	public String updateEmployee(AllEmployeesModel employeesModel);
 	public EmployeesModel getEmployeeById(int employeeId);
+	
+	EmpLogin login(String username, String password) throws ClassNotFoundException, SQLException;
+
 }

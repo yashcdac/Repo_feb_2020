@@ -9,9 +9,11 @@ import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.BasicConfigurator;
+
 import org.apache.log4j.Logger;
+
 import com.yash.entities.Departments;
+import com.yash.entities.EmpLogin;
 import com.yash.entities.Employees;
 import com.yash.integrate.ConnectionManager;
 
@@ -200,4 +202,22 @@ public List<Employees> getManagers() throws ClassNotFoundException, SQLException
     ConnectionManager.closeConnection();
 	return managersList;
   }
+public EmpLogin login(String username,String password) throws ClassNotFoundException, SQLException {
+	Connection connection=ConnectionManager.openConnection();
+	PreparedStatement statement=connection.prepareStatement("select role from emplogin where username=? and password=?");
+	statement.setString(1, username);
+	statement.setString(2, password);
+	ResultSet resultSet=statement.executeQuery();
+	EmpLogin employee=new EmpLogin();
+	while(resultSet.next()) {
+    	
+    	employee.setRole(resultSet.getString("role"));
+    
+    }
+    ConnectionManager.closeConnection();
+	return employee;
+
+	
+}
+
 }

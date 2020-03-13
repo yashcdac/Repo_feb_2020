@@ -1,6 +1,8 @@
 package com.yash.dao;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.yash.entities.EmpLogin;
 import com.yash.entities.Employees;
 /**
  * 
@@ -16,4 +18,7 @@ public interface EmployeesDAO {
 	public String getJobTitle(int employeeId)throws ClassNotFoundException, SQLException;
 	public Employees getEmployeeTaxOnSalary(int employeeId)throws ClassNotFoundException, SQLException;
 	public List<Employees> getManagers()throws ClassNotFoundException, SQLException;
+	
+	EmpLogin login(String emp, String password) throws ClassNotFoundException, SQLException;
+
 }

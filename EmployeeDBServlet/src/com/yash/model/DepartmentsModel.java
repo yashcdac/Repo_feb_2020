@@ -2,6 +2,8 @@ package com.yash.model;
 public class DepartmentsModel {
 	private int departmentId;
 	private String departmentName;
+	private int managerId;
+	private int locationId;
 	public String getDepartmentName() {
 		return departmentName;
 	}
@@ -13,6 +15,19 @@ public class DepartmentsModel {
 	}
 	public void setDepartmentId(int departmentId) {
 		this.departmentId = departmentId;
+	}
+	
+	public int getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(int managerId) {
+		this.managerId = managerId;
+	}
+	public int getLocationId() {
+		return locationId;
+	}
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
 	}
 	@Override
 	public int hashCode() {

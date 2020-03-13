@@ -1,39 +1,105 @@
 <!DOCTYPE html>
 <html x-ng-app="employeeApp">
 <head>
-<meta charset="ISO-8859-1">
+
 <title>Insert title here</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-    <script src="https://code.angularjs.org/1.3.15/angular.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<script src="https://code.angularjs.org/1.3.15/angular.js"></script>
+<script
+	src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
 
 <script src="angular.min.js"></script>
 <script src="angular-route.js"></script>
+
+<!-- for bootstrap menu -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="zingchart.min.js"></script>
+<script type="text/javascript" src="zingchart-angularjs.js"></script>
 
 <script src="controllers/EmployeeController.js"></script>
 </head>
 
 <body x-ng-controller="employeeController">
-	<p>
-		<a href="#/">Home Page</a>
-	</p>
-	<p>
-		<a href="#/getAllEmployees" x-ng-init='getAllEmployee()'>Get
-			Employee List</a>
+	<div x-ng-if="!flag">
+
+
+
+
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="text-center">Employee Data Management System</h1>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="#/"><b>Home
+							Page</b></a></li>
+				<!-- Dropdown -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" id="navbardrop"
+					data-toggle="dropdown"><b>Employee Details</b></a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#/getAllEmployees"
+							x-ng-init='getAllEmployee()'><b>Get Employee List</b></a> <a
+							class="dropdown-item" href="#/getEmployeeById"><b>Get
+								Employee By Id</b></a> <a class="dropdown-item"
+							href="#/updateDelEmployee"><b>update/delete Employee</b></a> <a
+							class="dropdown-item" href="#/addEmployee"
+							x-ng-init='getAllDepartment();getAllJobs();getAllManagers()'><b>Register
+								Employee</b></a> <a class="dropdown-item" href="#/chart"
+							x-ng-init='getAllEmployee()'><b>Department based chart</b></a>
+
+					</div></li>
+
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" id="navbardrop"
+					data-toggle="dropdown"><b>Job Details</b></a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#/getAllJobs"><b>Get All
+								Jobs</b></a> <a class="dropdown-item" href="#/getJobById"><b>Get
+								Job By Id</b></a> <a class="dropdown-item" href="#/addJob"><b>Create
+								Job</b></a> <a class="dropdown-item" href="#/updateDelJob"><b>Update/Delete
+								Job</b></a>
+					</div></li>
+
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" id="navbardrop"
+					data-toggle="dropdown"><b>Department Details</b></a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#/getAllDepartments"><b>Get
+								All Departments</b></a> <a class="dropdown-item"
+							href="#/getDepartmentById"><b>Get Department By Id</b></a> <a
+							class="dropdown-item" href="#/addDepartment"><b>Create
+								Department</b></a> <a class="dropdown-item" href="#/updateDelDepartment"><b>Update/Delete
+								Department </b></a>
+
+					</div></li>
+					
+					<li class="nav-item"><a class="nav-link" href="#/logout"><b>Logout</b></a></li>
 		
-	</p>
-	<p>
-		<a href="#/updateDelEmployee">update/delete Employee</a>
-	</p>
-	<p>
-
-		<a href="#/addEmployee">Register Employee</a>
-	</p>
-	<p>
-		<a href="#/getEmployeeById">Get Employee By Id</a>
-	</p>
-	<div x-ng-view></div>
-
+			</ul>
+		</nav>
+		
+		
+	</div>
+<div x-ng-view></div>
+	<div x-ng-if="flag">
+		<p>
+			<a href="#/login">login</a>
+		</p>
+	</div>
 
 </body>
 

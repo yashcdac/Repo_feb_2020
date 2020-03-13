@@ -2,6 +2,8 @@ package com.yash.model;
 public class JobsModel {
 	private String jobId;
 	private String jobTitle;
+	private double minSalary;
+	private double maxSalary;
 	public String getJobId() {
 		return jobId;
 	}
@@ -14,9 +16,23 @@ public class JobsModel {
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
+	
+	public double getMinSalary() {
+		return minSalary;
+	}
+	public void setMinSalary(double minSalary) {
+		this.minSalary = minSalary;
+	}
+	public double getMaxSalary() {
+		return maxSalary;
+	}
+	public void setMaxSalary(double maxSalary) {
+		this.maxSalary = maxSalary;
+	}
 	@Override
 	public String toString() {
-		return "JobsModel [jobId=" + jobId + ", jobTitle=" + jobTitle + "]";
+		return "JobsModel [jobId=" + jobId + ", jobTitle=" + jobTitle + ", minSalary=" + minSalary + ", maxSalary="
+				+ maxSalary + "]";
 	}
 	@Override
 	public int hashCode() {

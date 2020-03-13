@@ -162,18 +162,21 @@ hr {
       <br><br>
        <label for="departments"> Select Department: </label><br>
 	    <select name="singleSelect" x-ng-model="dept.departmentId" >
+	    <option>SELECT</option>
 	      <option x-ng-repeat='dept in deptList' x-ng-value='dept.departmentId'>{{dept.departmentName}}</option>
 	    </select>
 	    
 	    <br><br>
 	    <label for="jobs"> Select Job: </label><br>
 	    <select name="singleSelect" x-ng-model="job.jobId" >
+	    <option>SELECT</option>
 	      <option x-ng-repeat='job in jobList' x-ng-value='job.jobId'>{{job.jobTitle}}</option>
 	    </select>
 	    
 	    <br><br>
 	    <label for="managers"> Select Manager: </label><br>
 	    <select name="singleSelect" x-ng-model="manager.employeeId" >
+	    	<option>SELECT</option>
 	      <option x-ng-repeat='manager in managerList' x-ng-value='manager.employeeId'>{{manager.firstName}}</option>
 	    </select>
 
