@@ -3,63 +3,63 @@
 	employeeApp.config(function($routeProvider){
 		$routeProvider
 		.when("/addEmployee",{
-			templateUrl:"addEmployee.htm",
+			templateUrl:"employee.add.htm",
 			controller:'employeeController'
 		})
 		.when("/getAllEmployees",{
-			templateUrl:"employeeList.htm",
+			templateUrl:"employee.list.htm",
 			controller:'employeeController'
 		})
 		.when("/updateDelEmployee",{
-			templateUrl:"updateDelList.htm",
+			templateUrl:"employee.details.htm",
 			controller:'employeeController'
 		})
 		.when("/updateEmployee",{
-			templateUrl:"updateEmp.htm",
+			templateUrl:"employee.update.htm",
 			controller:'employeeController'
 		})
 		.when('/getEmployeeById',{
-			templateUrl:'empId.htm',
+			templateUrl:'employee.show.htm',
 			controller:'employeeController'
 		})
 		.when("/getAllJobs",{
-			templateUrl:"jobList.htm",
+			templateUrl:"job.list.htm",
 			controller:'employeeController'
 		})
 		.when("/getJobById",{
-			templateUrl:"GetJobByID.htm",
+			templateUrl:"job.show.htm",
 			controller:'employeeController'
 		})
 		.when("/updateDelJob",{
-			templateUrl:"updateDelJob.htm",
+			templateUrl:"job.details.htm",
 			controller:'employeeController'
 		})
 		.when("/updateJob",{
-			templateUrl:"updateJob.htm",
+			templateUrl:"job.update.htm",
 			controller:'employeeController'
 		})
 		.when("/addJob",{
-			templateUrl:"createJob.htm",
+			templateUrl:"job.add.htm",
 			controller:'employeeController'
 		})
 		.when("/getAllDepartments",{
-			templateUrl:"departmentList.htm",
+			templateUrl:"department.list.htm",
 			controller:'employeeController'
 		})
 		.when("/getDepartmentById",{
-			templateUrl:"getDepartmentById.htm",
+			templateUrl:"department.show.htm",
 			controller:'employeeController'
 		})
 		.when("/updateDelDepartment",{
-			templateUrl:"updateDelDepartment.htm",
+			templateUrl:"department.details.htm",
 			controller:'employeeController'
 		})
 		.when("/updateDept",{
-			templateUrl:"updateDepartment.htm",
+			templateUrl:"department.update.htm",
 			controller:'employeeController'
 		})
 		.when("/addDepartment",{
-			templateUrl:"createDepartment.htm",
+			templateUrl:"department.add.htm",
 			controller:'employeeController'
 		})
 		.when("/chart",{
