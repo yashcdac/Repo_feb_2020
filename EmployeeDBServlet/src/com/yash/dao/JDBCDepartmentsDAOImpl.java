@@ -50,11 +50,10 @@ public class JDBCDepartmentsDAOImpl implements DepartmentsDAO {
 		try {
 			connection = ConnectionManager.openConnection();
 			PreparedStatement statement=
-					connection.prepareStatement("insert into departments values(?,?,?,?)");
+					connection.prepareStatement("insert into departments(department_id,department_name) values(?,?)");
 			statement.setInt(1,departments.getDepartmentId());
 			statement.setString(2,departments.getDepartmentName());
-			statement.setInt(3, departments.getManagerId());
-			statement.setInt(4, departments.getLocationId());
+			
 			
 			int rows=statement.executeUpdate();
 			ConnectionManager.closeConnection();

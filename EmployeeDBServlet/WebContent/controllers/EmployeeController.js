@@ -237,11 +237,8 @@
 					method:'POST',
 					data:{
 						'departmentId':department.departmentId,
-						'departmentName':department.departmentName,
-						'managerId':department.managerId,
-						'locationId':department.locationId
-						
-					
+						'departmentName':department.departmentName
+
 					}})
 			.then(
 				res=>{

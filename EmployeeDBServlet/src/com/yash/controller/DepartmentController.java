@@ -171,7 +171,7 @@ public class DepartmentController extends HttpServlet {
 			e.setDepartmentId(jsonObject.getInt("departmentId"));
 			e.setDepartmentName(jsonObject.getString("departmentName"));
 			e.setManagerId(jsonObject.getInt("managerId"));
-			e.setLocationId(jsonObject.getInt("locationId"));
+			//e.setLocationId(jsonObject.getInt("locationId"));
 			departmentService.updateDepartment(e);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -184,6 +184,8 @@ public class DepartmentController extends HttpServlet {
 		BufferedReader bufferedReader = request.getReader();
 		StringBuilder sb = new StringBuilder();
 		String str = null;
+		int departmentId=0;
+		String departmentName=null;
 		while ((str = bufferedReader.readLine()) != null) {
 			sb.append(str);
 		}
@@ -194,15 +196,13 @@ public class DepartmentController extends HttpServlet {
 				jsonObject = new JSONObject(sb.toString());
 				
 				
-				int departmentId = jsonObject.getInt("departmentId");
-				String departmentName = jsonObject.getString("departmentName");
-				int managerId = jsonObject.getInt("managerId");
-				int locationId = jsonObject.getInt("locationId");
+				 departmentId = jsonObject.getInt("departmentId");
+				 departmentName = jsonObject.getString("departmentName");
+				
 				
 				model.setDepartmentId(departmentId);
 				model.setDepartmentName(departmentName);
-				model.setManagerId(managerId);
-				model.setLocationId(locationId);
+				
 				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -211,6 +211,7 @@ public class DepartmentController extends HttpServlet {
 			
 			String status=departmentService.registerdepartment(model);
 			System.out.println(status);
+			response.getWriter().write("department inserted with id "+departmentId);
 
 		
 		

@@ -34,7 +34,7 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 				departmentsModel.setDepartmentId(department.getDepartmentId());
 				departmentsModel.setDepartmentName(department.getDepartmentName());
 				departmentsModel.setManagerId(department.getManagerId());
-				departmentsModel.setLocationId(department.getLocationId());
+				//departmentsModel.setLocationId(department.getLocationId());
 				departmentsModelList.add(departmentsModel);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -55,7 +55,7 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 					departmentsModel.setDepartmentId(depts.getDepartmentId());
 					departmentsModel.setDepartmentName(depts.getDepartmentName());
 					departmentsModel.setManagerId(depts.getManagerId());
-					departmentsModel.setLocationId(depts.getLocationId());
+					//departmentsModel.setLocationId(depts.getLocationId());
 					
 					break;
 				}
@@ -71,8 +71,9 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 		Departments departments=new Departments();
 		departments.setDepartmentId(model.getDepartmentId());
 		departments.setDepartmentName(model.getDepartmentName());
-		departments.setManagerId(model.getManagerId());
-		departments.setLocationId(model.getLocationId());
+		System.out.println(departments);
+		//departments.setManagerId(model.getManagerId());
+		//departments.setLocationId(model.getLocationId());
 		String result=RESULTFORFAILURE;
 		boolean stored=departmentsDAO.storeDeptDetails(departments);
 		if(stored)
@@ -85,7 +86,7 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 		departments.setDepartmentId(model.getDepartmentId());
 		departments.setDepartmentName(model.getDepartmentName());
 		departments.setManagerId(model.getManagerId());
-		departments.setLocationId(model.getLocationId());
+		//departments.setLocationId(model.getLocationId());
 		String result=RESULTFORFAILURE;
 		boolean updated=departmentsDAO.updateEmployee(departments);
 		if(updated)
